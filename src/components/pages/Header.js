@@ -89,7 +89,7 @@ export default function Header() {
               </a>
               <ul>
                 <li><a href="https://resources.vulnerax.com/resources/articles">Article</a></li>
-                <li><a href="https://resources.vulnerax.com/resources/documents">Documents</a></li>
+                <li><a href="https://resources.vulnerax.com/resources/vulneralab">VulneraLab</a></li>
               </ul>
             </li>
             <li><Link href="/#our-certification">Certification</Link></li>
