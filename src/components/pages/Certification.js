@@ -41,6 +41,10 @@ export default function Certificate() {
       id: 9,
       image: '/img/certificate/PMP.png',
     },
+    {
+      id: 10,
+      image: '/img/certificate/OSCP.png',
+    },
   ];
 
   return (
