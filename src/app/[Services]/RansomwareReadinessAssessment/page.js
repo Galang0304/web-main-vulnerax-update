@@ -69,7 +69,7 @@ export default function RansomwareReadinessAssessment() {
                   </p>
 
                   <div className="hero-buttons">
-                    <Link href={'/quiz'} className='btn btn-primary me-0 me-sm-2 mx-1'>
+                    <Link href={'/rra'} className='btn btn-primary me-0 me-sm-2 mx-1'>
                       Take the Test <i className="bi bi-arrow-right h5 ms-2"></i>
                     </Link>
                   </div>

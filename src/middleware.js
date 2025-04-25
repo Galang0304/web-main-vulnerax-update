@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 // Daftar jalur yang valid
 const validPaths = [
     '/',
-    '/quiz',
+    '/rra',
     '/report',
     '/pdf',
     '/robots.txt',

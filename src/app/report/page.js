@@ -129,7 +129,7 @@ const ReportPage = () => {
     if (isClient) {
       if (!scores || Object.keys(scores).length === 0) {
         setErrorMessage(t.errorMessage);
-        setTimeout(() => router.push('/quiz'), 3000); 
+        setTimeout(() => router.push('/rra'), 3000); 
       }
     }
   }, [isClient, scores, router, t]);

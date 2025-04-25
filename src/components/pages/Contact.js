@@ -87,8 +87,8 @@ export default function Contact() {
                 </div>
                 <div className="content">
                   <h4>Our Location</h4>
-                  <p>Jln. Mon. Emmy Saelan III No. 70, Karunrung, Kec. Rappocini.</p>
-                  <p>Makassar City, South Sulawesi</p>
+                  <p>Ruko Newton, Cileungsi, Jawa Barat</p>
+                  <p>Indonesia</p>
                 </div>
               </div>
               <div className="info-item" data-aos="fade-up" data-aos-delay="400">

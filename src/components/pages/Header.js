@@ -92,7 +92,7 @@ export default function Header() {
                 <li><a href="https://resources.vulnerax.com/resources/documents">Documents</a></li>
               </ul>
             </li>
-            <li><Link href="/#our-team">Team</Link></li>
+            <li><Link href="/#our-certification">Certification</Link></li>
           </ul>
           <i className={`mobile-nav-toggle d-xl-none bi ${isOpen ? 'bi-x' : 'bi-list'}`} onClick={toggleNav}></i>
         </nav>

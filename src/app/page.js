@@ -3,7 +3,7 @@ import Header from '@/components/pages/Header';
 import About from "@/components/pages/about";
 import Services from "@/components/pages/Services";
 import Features from "@/components/pages/Features";
-import OurTeam from "@/components/pages/Team";
+import Certification from "@/components/pages/Certification";
 import CallToAction from "@/components/pages/CallToAction";
 import Contact from "@/components/pages/Contact";
 import Footer from "@/components/pages/Footer";
@@ -66,7 +66,7 @@ export default function Home() {
       <Services />
       <Features />
       <CallToAction />
-      <OurTeam />
+      <Certification />
       <Contact />
       <Footer />
     </main>
