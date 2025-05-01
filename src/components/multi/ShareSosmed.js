@@ -7,7 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { questionTest } from '@/app/pages/api/question';
 
 // Definisikan base URL untuk mode development
-const BASE_SHARE_URL = 'https://dev.vulnerax.com';
+const BASE_SHARE_URL = 'https://vulnerax.id';
 
 // Komponen Kustom untuk Slack Share Button
 const SlackShareButton = ({ url, title, children }) => {

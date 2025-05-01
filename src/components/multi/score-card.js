@@ -6,8 +6,8 @@ import useTestStore from '@/store/report-store';
 import { questionTest } from '@/app/pages/api/question';
 
 // Definisikan base URL untuk mode development
-const BASE_API_URL = 'https://vulnerax.com'; // Untuk mengambil data dari API
-const BASE_SHARE_URL = 'https://dev.vulnerax.com'; // Untuk URL yang dibagikan di media sosial
+const BASE_API_URL = 'https://vulnerax.id'; // Untuk mengambil data dari API
+const BASE_SHARE_URL = 'https://vulnerax.id'; // Untuk URL yang dibagikan di media sosial
 
 // Struktur data rekomendasi (dipertahankan seperti aslinya)
 const recommendationsMap = {

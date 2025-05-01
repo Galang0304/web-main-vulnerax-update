@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 
 Chart.register(...registerables);
 
-const BASE_URL = 'https://vulnerax.com';
+const BASE_URL = 'https://vulnerax.id';
 
 // Objek terjemahan untuk Bahasa Inggris dan Indonesia
 const translations = {

@@ -13,7 +13,7 @@ const sanitizeInput = (input) => {
     .replace(/\//g, '/');
 };
 
-const BASE_URL = 'https://vulnerax.com';
+const BASE_URL = 'https://vulnerax.id';
 
 // Daftar domain email publik yang tidak diperbolehkan
 const PUBLIC_EMAIL_DOMAINS = [

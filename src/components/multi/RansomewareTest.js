@@ -7,7 +7,7 @@ import useTestStore from '@/store/report-store';
 import { useRouter } from 'next/navigation';
 import ContactFormModal from './CompanyForm';
 
-const BASE_URL = 'https://vulnerax.com';
+const BASE_URL = 'https://vulnerax.id';
 
 // Objek terjemahan untuk teks statis
 const translations = {
