@@ -234,7 +234,7 @@ export default function ScoreCardPage() {
   const description = `Check out ${companyName}'s ransomware readiness score: ${rating} with ${overallScore.toFixed(2)}%! See how we stack up against cyber threats.`;
   const shareUrl = `${BASE_SHARE_URL}/score-card/${companyId}${encodedScores ? `?scores=${encodedScores}` : ''}`;
   const imageUrl = `${BASE_SHARE_URL}/pages/api/score-card-image/${companyId}${encodedScores ? `?scores=${encodedScores}` : ''}`;
-  const fallbackImageUrl = 'https://dev.vulnerax.com/static/default-scorecard.jpg'; // Ganti dengan URL gambar default Anda
+  const fallbackImageUrl = 'https://vulnerax.id/static/default-scorecard.jpg'; // Ganti dengan URL gambar default Anda
 
   if (loading) {
     return (
