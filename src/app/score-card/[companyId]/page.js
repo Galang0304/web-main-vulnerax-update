@@ -11,8 +11,8 @@ import Contact from '@/components/pages/Contact';
 import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 
-const BASE_API_URL = 'https://vulnerax.com';
-const BASE_SHARE_URL = 'https://dev.vulnerax.com'; 
+const BASE_API_URL = 'https://vulnerax.id';
+const BASE_SHARE_URL = 'https://vulnerax.id'; 
 
 export default function ScoreCardPage() {
   const router = useRouter();
