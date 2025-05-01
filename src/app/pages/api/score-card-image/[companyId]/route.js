@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
   const { companyId } = params;
 
   // URL halaman score-card untuk mode development
-  const scoreCardUrl = `https://dev.vulnerax.com/score-card/${companyId}`;
+  const scoreCardUrl = `https://vulnerax.id/score-card/${companyId}`;
 
   try {
     // Luncurkan browser menggunakan Puppeteer

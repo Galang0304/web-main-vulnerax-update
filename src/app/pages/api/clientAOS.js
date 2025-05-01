@@ -9,16 +9,16 @@ const ClientOnlyAOS = dynamic(
         useEffect(() => {
             import('aos').then((AOS) => {
                 AOS.init({
-                    duration: 1000, // Durasi animasi
-                    once: true, // Animasi hanya terjadi sekali
+                    duration: 1000, 
+                    once: true, 
                 });
             });
         }, []);
 
-        // Kembalikan null karena komponen ini tidak merender apa pun
+        
         return null;
     }),
-    { ssr: false } // Nonaktifkan SSR untuk komponen ini
+    { ssr: false }
 );
 
 export default ClientOnlyAOS;
