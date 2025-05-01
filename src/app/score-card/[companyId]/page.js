@@ -195,7 +195,7 @@ export default function ScoreCardPage() {
   useEffect(() => {
     if (shouldRedirect) {
       const timer = setTimeout(() => {
-        router.push('/quiz');
+        router.push('/rra');
       }, 3000);
       return () => clearTimeout(timer);
     }
