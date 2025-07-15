@@ -116,7 +116,7 @@ export default function Contact() {
                 <div className="content">
                   <h4>Why Choose VulneraX?</h4>
                   <p>
-                    🛡️ <strong>Your Digital Fortress, Built to Last.</strong> At VulneraX, we combine <strong>proven expertise</strong>, 🚀 <strong>innovative solutions</strong>, and 💡 <strong>actionable insights</strong> to protect your business from evolving cyber threats. From penetration testing to ransomware readiness, our team ensures your systems are unbreakable. <strong>Ready to secure your future?</strong> Let’s create a safer digital ecosystem together.
+                    <strong>Your Digital Fortress, Built to Last.</strong> At VulneraX, we combine <strong>proven expertise</strong>, <strong>innovative solutions</strong>, and <strong>actionable insights</strong> to protect your business from evolving cyber threats. From penetration testing to ransomware readiness, our team ensures your systems are unbreakable. <strong>Ready to secure your future?</strong> Let’s create a safer digital ecosystem together.
                   </p>
                 </div>
               </div>
