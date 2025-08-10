@@ -1,7 +1,9 @@
-"use client";
-import { useState, useRef, useEffect } from "react"; 
+'use client';
+import { useState, useRef, useEffect } from "react";
 import emailjs from '@emailjs/browser';
-import Alert from 'react-bootstrap/Alert'; 
+import Alert from 'react-bootstrap/Alert';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaShieldAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState("idle");
@@ -11,13 +13,12 @@ export default function Contact() {
   const [alertMessage, setAlertMessage] = useState("");
   const form = useRef();
 
-  // Gunakan useEffect untuk menghilangkan alert setelah beberapa detik
   useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
         setShowAlert(false);
-      }, 3000); // Alert akan hilang setelah 3 detik
-      return () => clearTimeout(timer); // Bersihkan timer jika komponen unmount
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [showAlert]);
 
@@ -30,13 +31,9 @@ export default function Contact() {
       const data = {
         name: formData.get("user_name"),
         email: formData.get("user_email"),
-        // cc: formData.get("cc"),
-        // bcc: formData.get("bcc"),
         subject: formData.get("subject"),
         message: formData.get("message"),
       };
-  
-      console.log("Form Data:", data); // Log the form data
   
       await emailjs.send(
         'service_x3jvll4',
@@ -45,8 +42,6 @@ export default function Contact() {
           to_name: "VulneraX Team",
           from_name: data.name,
           reply_to: data.email,
-          // cc: data.cc,
-          // bcc: data.bcc,
           subject: data.subject,
           message: data.message,
         },
@@ -70,112 +65,126 @@ export default function Contact() {
     }
   };
 
-  return (
-    <section id="contact" className="contact section light-background">
-      <div className="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>For inquiries or more information, feel free to get in touch with us through the details below.</p>
-      </div>
-      <div className="container" data-aos="fade-up" data-aos-delay="100">
-        <div className="row g-4 g-lg-5">
-          <div className="col-lg-5">
-            <div className="info-box" data-aos="fade-up" data-aos-delay="200">
-              <h3>Contact Info</h3>
-              <div className="info-item" data-aos="fade-up" data-aos-delay="300">
-                <div className="icon-box">
-                  <i className="bi bi-geo-alt"></i>
-                </div>
-                <div className="content">
-                  <h4>Our Location</h4>
-                  <p>Ruko Newton, Cileungsi, Jawa Barat</p>
-                  <p>Indonesia</p>
-                </div>
-              </div>
-              <div className="info-item" data-aos="fade-up" data-aos-delay="400">
-                <div className="icon-box">
-                  <i className="bi bi-telephone"></i>
-                </div>
-                <div className="content">
-                  <h4>Phone Number</h4>
-                  <p>+62 852 4079 1254</p>
-                </div>
-              </div>
-              <div className="info-item" data-aos="fade-up" data-aos-delay="500">
-                <div className="icon-box">
-                  <i className="bi bi-envelope"></i>
-                </div>
-                <div className="content">
-                  <h4>Email Address</h4>
-                  <p>business@vulnerax.com</p>
-                </div>
-              </div>
-              <div className="info-item" data-aos="fade-up" data-aos-delay="600">
-                <div className="icon-box">
-                  <i className="bi bi-shield-lock"></i> {/* Ikon yang relevan */}
-                </div>
-                <div className="content">
-                  <h4>Why Choose VulneraX?</h4>
-                  <p>
-                    <strong>Your Digital Fortress, Built to Last.</strong> At VulneraX, we combine <strong>proven expertise</strong>, <strong>innovative solutions</strong>, and <strong>actionable insights</strong> to protect your business from evolving cyber threats. From penetration testing to ransomware readiness, our team ensures your systems are unbreakable. <strong>Ready to secure your future?</strong> Let’s create a safer digital ecosystem together.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-7">
-            <div className="contact-form" data-aos="fade-up" data-aos-delay="300">
-              <h3>Get In Touch</h3>
-              <p>We’d love to hear from you! Drop us a message and we’ll respond promptly.</p>
-              <form ref={form} onSubmit={handleSubmit} className="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                <div className="row gy-4">
-                  <div className="col-md-6">
-                    <input type="text" name="user_name" className="form-control" placeholder="Your Name" required />
-                  </div>
-                  <div className="col-md-6">
-                    <input type="email" name="user_email" className="form-control" placeholder="Your Email" required />
-                  </div>
-                  {/* <div className="col-md-6">
-                    <input type="email" name="cc" className="form-control" placeholder="CC (optional)" />
-                  </div>
-                  <div className="col-md-6">
-                    <input type="email" name="bcc" className="form-control" placeholder="BCC (optional)" />
-                  </div> */}
-                  <div className="col-12">
-                    <input type="text" name="subject" className="form-control" placeholder="Subject" required />
-                  </div>
-                  <div className="col-12">
-                    <textarea className="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                  </div>
-                  <div className="col-12 text-center">
-                    {formStatus === "loading" && <div className="loading">Loading</div>}
-                    {formStatus === "error" && <div className="error-message">{errorMessage}</div>}
-                    {formStatus === "success" && <div className="sent-message">Your message has been sent. Thank you!</div>}
-                    <button type="submit" className="btn" disabled={formStatus === "loading"}>
-                      Send Message
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  // Styles
+  const sectionStyle = {
+    padding: '80px 0',
+    backgroundColor: '#fff',
+    fontFamily: "'Inter', sans-serif",
+  };
 
-      {/* Alert dengan posisi fixed di top center */}
-      {showAlert && (
-        <div style={styles.alertContainer}>
-          <Alert variant={alertVariant} onClose={() => setShowAlert(false)} dismissible>
-            {alertMessage}
-          </Alert>
-        </div>
-      )}
-    </section>
-  );
-}
+  const titleContainerStyle = {
+    textAlign: 'center',
+    marginBottom: '50px',
+  };
 
-// CSS untuk posisi fixed dan animasi
-const styles = {
-  alertContainer: {
+  const mainTitleStyle = {
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: '2.5rem',
+    fontWeight: '700',
+    marginBottom: '10px',
+  };
+
+  const subtitleStyle = {
+    fontSize: '1.1rem',
+    color: '#6c757d',
+    maxWidth: '700px',
+    margin: '0 auto',
+  };
+
+  const infoBoxStyle = {
+    backgroundColor: '#f8f9fa',
+    borderRadius: '15px',
+    padding: '30px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
+  const infoItemStyle = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '20px',
+    marginBottom: '25px',
+  };
+
+  const iconBoxStyle = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    backgroundColor: '#E60040',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexShrink: 0,
+  };
+
+  const iconStyle = {
+    fontSize: '1.5rem',
+    color: '#fff',
+  };
+
+  const contentTitleStyle = {
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    color: '#343a40',
+    marginBottom: '5px',
+  };
+
+  const contentTextStyle = {
+    fontSize: '1rem',
+    color: '#555',
+    lineHeight: '1.6',
+    margin: '0',
+  };
+
+  const formContainerStyle = {
+    backgroundColor: '#f8f9fa',
+    borderRadius: '15px',
+    padding: '40px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+  };
+
+  const formHeadingStyle = {
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: '2rem',
+    fontWeight: '700',
+    marginBottom: '10px',
+    color: '#343a40',
+  };
+
+  const formSubtitleStyle = {
+    fontSize: '1rem',
+    color: '#6c757d',
+    marginBottom: '30px',
+  };
+
+  const formControlStyle = {
+    border: '1px solid #dee2e6',
+    borderRadius: '8px',
+    padding: '12px 15px',
+    width: '100%',
+    fontSize: '1rem',
+  };
+
+  const buttonStyle = {
+    padding: '15px 40px',
+    borderRadius: '50px',
+    background: 'linear-gradient(90deg, #E60040 0%, #FF6000 100%)',
+    border: 'none',
+    color: '#fff',
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    letterSpacing: '1px',
+    boxShadow: '0 4px 15px rgba(230, 0, 64, 0.4)',
+    textDecoration: 'none',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    marginTop: '20px',
+  };
+
+  const alertContainerStyle = {
     position: 'fixed',
     top: '20px',
     left: '50%',
@@ -183,23 +192,126 @@ const styles = {
     zIndex: 9999,
     width: '100%',
     maxWidth: '500px',
-    animation: 'fadeIn 0.5s, fadeOut 0.5s 2.5s', // Animasi muncul dan menghilang
-  },
-};
+  };
 
-// Tambahkan animasi CSS ke dalam global styles
-if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement('style');
-  styleSheet.type = 'text/css';
-  styleSheet.innerText = `
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
+  const fadeInOutKeyframes = `
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
   `;
-  document.head.appendChild(styleSheet);
+
+  // Inject keyframes into the document head
+  if (typeof document !== 'undefined') {
+    const styleSheet = document.createElement('style');
+    styleSheet.type = 'text/css';
+    styleSheet.innerText = fadeInOutKeyframes;
+    document.head.appendChild(styleSheet);
+  }
+
+  const alertAnimation = showAlert ? 'fadeIn 0.5s, fadeOut 0.5s 2.5s' : 'none';
+
+  return (
+    <section id="contact" className="contact section" style={sectionStyle}>
+      <div className="container" data-aos="fade-up">
+        <div style={titleContainerStyle}>
+          <h2 style={mainTitleStyle}>Contact Us</h2>
+          <p style={subtitleStyle}>For inquiries or more information, feel free to get in touch with us through the details below.</p>
+        </div>
+        <div className="row g-4 g-lg-5">
+          <div className="col-lg-5">
+            <div style={infoBoxStyle} data-aos="fade-up" data-aos-delay="200">
+              <h3 style={formHeadingStyle}>Contact Info</h3>
+              <div style={infoItemStyle} data-aos="fade-up" data-aos-delay="300">
+                <div style={iconBoxStyle}>
+                  <FaMapMarkerAlt style={iconStyle} />
+                </div>
+                <div>
+                  <h4 style={contentTitleStyle}>Our Location</h4>
+                  <p style={contentTextStyle}>Ruko Newton, Cileungsi, Jawa Barat</p>
+                  <p style={contentTextStyle}>Indonesia</p>
+                </div>
+              </div>
+              <div style={infoItemStyle} data-aos="fade-up" data-aos-delay="400">
+                <div style={iconBoxStyle}>
+                  <FaPhone style={iconStyle} />
+                </div>
+                <div>
+                  <h4 style={contentTitleStyle}>Phone Number</h4>
+                  <p style={contentTextStyle}>+62 852 4079 1254</p>
+                </div>
+              </div>
+              <div style={infoItemStyle} data-aos="fade-up" data-aos-delay="500">
+                <div style={iconBoxStyle}>
+                  <FaEnvelope style={iconStyle} />
+                </div>
+                <div>
+                  <h4 style={contentTitleStyle}>Email Address</h4>
+                  <p style={contentTextStyle}>business@vulnerax.com</p>
+                </div>
+              </div>
+              <div style={infoItemStyle} data-aos="fade-up" data-aos-delay="600">
+                <div style={iconBoxStyle}>
+                  <FaShieldAlt style={iconStyle} />
+                </div>
+                <div>
+                  <h4 style={contentTitleStyle}>Why Choose VulneraX?</h4>
+                  <p style={contentTextStyle}>
+                    <strong>Your Digital Fortress, Built to Last.</strong> At VulneraX, we combine <strong>proven expertise</strong>, <strong>innovative solutions</strong>, and <strong>actionable insights</strong> to protect your business from evolving cyber threats. From penetration testing to ransomware readiness, our team ensures your systems are unbreakable. <strong>Ready to secure your future?</strong> Let’s create a safer digital ecosystem together.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <div style={formContainerStyle} data-aos="fade-up" data-aos-delay="300">
+              <h3 style={formHeadingStyle}>Get In Touch</h3>
+              <p style={formSubtitleStyle}>We’d love to hear from you! Drop us a message and we’ll respond promptly.</p>
+              <form ref={form} onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="200">
+                <div className="row gy-4">
+                  <div className="col-md-6">
+                    <input type="text" name="user_name" style={formControlStyle} placeholder="Your Name" required />
+                  </div>
+                  <div className="col-md-6">
+                    <input type="email" name="user_email" style={formControlStyle} placeholder="Your Email" required />
+                  </div>
+                  <div className="col-12">
+                    <input type="text" name="subject" style={formControlStyle} placeholder="Subject" required />
+                  </div>
+                  <div className="col-12">
+                    <textarea style={formControlStyle} name="message" rows="6" placeholder="Message" required></textarea>
+                  </div>
+                  <div className="col-12 text-center">
+                    {formStatus === "loading" && <div className="loading">Loading</div>}
+                    {formStatus === "error" && <div className="error-message">{errorMessage}</div>}
+                    {formStatus === "success" && <div className="sent-message">Your message has been sent. Thank you!</div>}
+                    <motion.button 
+                      type="submit" 
+                      style={buttonStyle} 
+                      disabled={formStatus === "loading"}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Send Message
+                    </motion.button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {showAlert && (
+        <motion.div 
+          style={alertContainerStyle}
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Alert variant={alertVariant} onClose={() => setShowAlert(false)} dismissible>
+            {alertMessage}
+          </Alert>
+        </motion.div>
+      )}
+    </section>
+  );
 }
