@@ -60,7 +60,7 @@ export default function About() {
     marginTop: '40px',
     padding: '25px',
     borderRadius: '15px',
-    background: '#E60040',
+    background: '#e60000ff',
     boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
     color: '#fff',
   };
@@ -74,7 +74,7 @@ export default function About() {
 
   const contactIconStyle = {
     color: '#fff',
-    fontSize: '1.5em', // Ukuran ikon kontak tetap lebih besar untuk menonjol
+    fontSize: '1.5em',
   };
 
   const imageWrapperStyle = {
