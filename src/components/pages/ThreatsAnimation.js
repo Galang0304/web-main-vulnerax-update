@@ -38,21 +38,15 @@ export default function ThreatsAnimation() {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     padding: '30px 0',
-    background: 'url(/img/RansomwareAttackPict.jpg) no-repeat fixed center center / cover',
+    // Perubahan di sini: Latar belakang kembali ke gradien abu-abu putih
+    background: 'linear-gradient(90deg, rgba(248,249,250,1) 0%, rgba(248,249,250,0) 15%, rgba(248,249,250,0) 85%, rgba(248,249,250,1) 100%)',
     position: 'relative',
-    borderTop: '1px solid #ff4d4d',
-    borderBottom: '1px solid #ff4d4d',
+    borderTop: '1px solid #e9ecef',
+    borderBottom: '1px solid #e9ecef',
   };
   
-  const overlayStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    zIndex: 1,
-  };
+  // Menghapus overlayStyle karena latar belakang sudah terang
+  const overlayStyle = {};
 
   const motionDivStyle = {
     display: 'inline-flex',
@@ -68,12 +62,12 @@ export default function ThreatsAnimation() {
     alignItems: 'center',
     gap: '10px',
     margin: '0 10px',
-    padding: '15px 15px',
+    padding: '10px 15px',
     borderRadius: '15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)', // Warna latar belakang glass box disesuaikan
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+    border: '1px solid rgba(255, 255, 255, 0.4)', // Warna border disesuaikan
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
     whiteSpace: 'normal',
     width: '200px',
     flexShrink: 0,
@@ -83,26 +77,26 @@ export default function ThreatsAnimation() {
     fontSize: '0.7rem',
     fontWeight: '500',
     whiteSpace: 'nowrap',
-    color: '#fff',
+    color: '#343a40', // Warna teks judul kembali ke abu-abu gelap
     textTransform: 'uppercase',
   };
 
   const textDescriptionStyle = {
     fontSize: '0.6rem',
     fontWeight: '200',
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: '#6c757d', // Warna teks deskripsi kembali ke abu-abu
     whiteSpace: 'nowrap',
     marginTop: '5px',
   };
 
   const iconStyle = {
     fontSize: '1.5rem',
-    color: '#fff',
+    color: '#E60040', // Warna ikon kembali ke merah
   };
 
   return (
     <div style={containerStyle}>
-      <div style={overlayStyle}></div>
+      {/* Menghapus div overlay yang tidak lagi diperlukan */}
       <motion.div
         style={motionDivStyle}
         variants={textVariants}
