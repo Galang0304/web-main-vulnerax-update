@@ -9,7 +9,6 @@ import CallToAction from "@/components/pages/CallToAction";
 import Contact from "@/components/pages/Contact";
 import Footer from "@/components/pages/Footer";
 
-// Gaya CSS yang telah dikonversi menjadi objek JavaScript
 const heroSectionStyle = {
   paddingTop: '100px',
   paddingBottom: '80px',
@@ -35,7 +34,7 @@ const accentTextStyle = {
 const btnPrimaryGradientStyle = {
   padding: '12px 30px',
   borderRadius: '50px',
-  background: 'linear-gradient(90deg, #E60040 0%, #FF6000 100%)',
+  background: 'linear-gradient(90deg, #E60040 100%)',
   border: 'none',
   color: '#fff',
   fontWeight: '600',

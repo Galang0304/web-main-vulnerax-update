@@ -55,7 +55,7 @@ export default function CallToAction() {
   const buttonStyle = {
     padding: '15px 40px',
     borderRadius: '50px',
-    background: 'linear-gradient(90deg, #e60000ff 50%, #ff6200b7 100%)',
+    background: 'linear-gradient(90deg, #E60040 100%)',
     border: 'none',
     color: '#fff',
     fontWeight: '600',

@@ -99,6 +99,7 @@ export default function Contact() {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backdropFilter: 'none'
   };
 
   const infoItemStyle = {
@@ -171,7 +172,7 @@ export default function Contact() {
   const buttonStyle = {
     padding: '15px 40px',
     borderRadius: '50px',
-    background: 'linear-gradient(90deg, #E60040 0%, #FF6000 100%)',
+    background: 'linear-gradient(90deg, #E60040 100%)',
     border: 'none',
     color: '#fff',
     fontWeight: '600',
