@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { FaLock, FaExclamationTriangle, FaServer, FaUserSecret, FaBug, FaCloud, FaLaptopCode, FaHandshakeSlash, FaMicrochip, FaRobot, FaFingerprint } from 'react-icons/fa';
 
-// Array baru yang menggabungkan teks ancaman dan ikon yang relevan, dengan deskripsi singkat
 const threatsWithIcons = [
   { text: 'APT', description: 'Stealthy infiltration', icon: FaUserSecret },
   { text: 'STATE-SPONSORED HACKING', description: 'Nation-backed attacks', icon: FaLaptopCode },
@@ -21,12 +20,12 @@ const threatsWithIcons = [
 
 const textVariants = {
   animate: {
-    x: ['-100%', '100%'],
+    x: ['0%', '-100%'],
     transition: {
       x: {
         repeat: Infinity,
         repeatType: 'loop',
-        duration: 100, // Durasi lebih panjang karena item lebih banyak
+        duration: 90,
         ease: 'linear',
       },
     },
@@ -38,22 +37,17 @@ export default function ThreatsAnimation() {
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     padding: '30px 0',
-    // Perubahan di sini: Latar belakang kembali ke gradien abu-abu putih
-    background: 'linear-gradient(90deg, rgba(248,249,250,1) 0%, rgba(248,249,250,0) 15%, rgba(248,249,250,0) 85%, rgba(248,249,250,1) 100%)',
+    background: 'linear-gradient(90deg, rgba(240, 240, 240, 1) 0%, rgba(240, 240, 240, 0) 15%, rgba(240, 240, 240, 0) 85%, rgba(240, 240, 240, 1) 100%)',
     position: 'relative',
     borderTop: '1px solid #e9ecef',
     borderBottom: '1px solid #e9ecef',
   };
   
-  // Menghapus overlayStyle karena latar belakang sudah terang
-  const overlayStyle = {};
-
   const motionDivStyle = {
     display: 'inline-flex',
     alignItems: 'center',
-    width: '100%',
-    position: 'relative',
-    zIndex: 2,
+    width: `${threatsWithIcons.length * 2 * 210}px`,
+    transform: `translateX(10%)`,
   };
   
   const glassItemStyle = {
@@ -64,10 +58,10 @@ export default function ThreatsAnimation() {
     margin: '0 10px',
     padding: '10px 15px',
     borderRadius: '15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)', // Warna latar belakang glass box disesuaikan
-    backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.4)', // Warna border disesuaikan
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Efek glass box yang lebih transparan
+    backdropFilter: 'blur(10px)', // Blur yang lebih kuat
+    border: '1px solid rgba(255, 255, 255, 0.6)', // Border lebih solid
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)', // Shadow lebih menonjol
     whiteSpace: 'normal',
     width: '200px',
     flexShrink: 0,
@@ -77,26 +71,25 @@ export default function ThreatsAnimation() {
     fontSize: '0.7rem',
     fontWeight: '500',
     whiteSpace: 'nowrap',
-    color: '#343a40', // Warna teks judul kembali ke abu-abu gelap
+    color: '#343a40',
     textTransform: 'uppercase',
   };
 
   const textDescriptionStyle = {
     fontSize: '0.6rem',
     fontWeight: '200',
-    color: '#6c757d', // Warna teks deskripsi kembali ke abu-abu
+    color: '#6c757d',
     whiteSpace: 'nowrap',
     marginTop: '5px',
   };
 
   const iconStyle = {
     fontSize: '1.5rem',
-    color: '#E60040', // Warna ikon kembali ke merah
+    color: '#E60040',
   };
 
   return (
     <div style={containerStyle}>
-      {/* Menghapus div overlay yang tidak lagi diperlukan */}
       <motion.div
         style={motionDivStyle}
         variants={textVariants}

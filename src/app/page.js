@@ -110,7 +110,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <About />
       <Services />
       <ThreatsAnimation />
