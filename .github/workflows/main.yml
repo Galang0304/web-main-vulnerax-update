@@ -1,0 +1,41 @@
+name: CI/CD vulnerax-main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout kode dari repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Debug secrets
+      - name: Debug secrets
+        run: |
+          echo "VPS_HOST is set: ${{ secrets.VPS_HOST != '' }}"
+          echo "VPS_USERNAME is set: ${{ secrets.VPS_USERNAME != '' }}"
+          echo "VPS_SSH_KEY is set: ${{ secrets.VPS_SSH_KEY != '' }}"
+          echo "VPS_SSH_PORT is set: ${{ secrets.VPS_SSH_PORT != '' }}"
+
+      # Step 3: Deploy to VPS
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_SSH_PORT }}
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 22.14.0
+            export PATH=$PATH:/home/gusdur/.nvm/versions/node/v22.14.0/bin
+            cd /home/gusdur/Content-side/Prod/vulnerax-main
+            git pull
+            npm run build
+            pm2 reload vulnerax-main
