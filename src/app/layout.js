@@ -51,8 +51,8 @@ export const metadata = {
         url: ogBanner,
         width: 1200,
         height: 630,
-        alt: `${siteName} Open Graph Banner`,
-        type: 'image/svg+xml'
+        alt: `${siteName} – Cybersecurity Services Banner`,
+        type: 'image/png'
       },
       {
         url: ogLogo,
@@ -118,13 +118,18 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
   <link rel="shortcut icon" href="/img/logo.png" />
+  {/* Explicit OG basic meta for scrapers that ignore structured metadata API */}
+  <meta property="og:title" content={`${siteName} – Expert Cybersecurity Services`} />
+  <meta property="og:description" content={siteDescription} />
   {/* Fallback explicit OG/Twitter meta (kadang diperlukan pada beberapa scraper seperti Telegram/WhatsApp) */}
-  <meta property="og:image" content={`${siteUrl}/img/logo.png`} />
+  {/* Primary OG Image (Banner) */}
+  <meta property="og:image" content={ogBanner} />
   <meta property="og:image:secure_url" content={ogBanner} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/svg+xml" />
-  <meta property="og:image:alt" content={`${siteName} Open Graph Banner`} />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content={`${siteName} – Cybersecurity Services Banner`} />
+  {/* Secondary OG Image (Logo) */}
   <meta property="og:image" content={ogLogo} />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
