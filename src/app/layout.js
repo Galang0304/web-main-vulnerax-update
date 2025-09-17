@@ -3,7 +3,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 import ClientOnlyAOS from "./pages/api/clientAOS";
 
-const siteUrl = "https://vulnerax.com";
+// Gunakan domain dari environment (set NEXT_PUBLIC_SITE_URL) atau fallback ke domain produksi .id
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vulnerax.id";
 const siteName = "VulneraX";
 const siteDescription = "Transforming Vulnerabilities into Strengths: Expert cybersecurity services (Penetration Testing, Red Teaming, Vulnerability Assessment, System Hardening, Threat Hunting & IR, Ransomware Readiness).";
 const siteKeywords = [
@@ -31,6 +32,10 @@ export const metadata = {
   publisher: siteName,
   alternates: {
     canonical: siteUrl,
+    languages: {
+      'en-US': siteUrl,
+    },
+    media: {},
   },
   openGraph: {
     type: "website",
@@ -41,19 +46,20 @@ export const metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/img/logo.png",
+        url: `${siteUrl}/img/logo.png`,
         width: 512,
         height: 512,
-        alt: `${siteName} Logo`
+        alt: `${siteName} Logo`,
+        type: 'image/png'
       }
-    ]
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@VulneraX",
     title: `${siteName} – Expert Cybersecurity Services`,
     description: siteDescription,
-    images: ["/img/logo.png"],
+    images: [`${siteUrl}/img/logo.png`],
   },
   icons: {
     icon: [
@@ -102,7 +108,17 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="shortcut icon" href="/img/logo.png" />
+  <link rel="shortcut icon" href="/img/logo.png" />
+  {/* Fallback explicit OG/Twitter meta (kadang diperlukan pada beberapa scraper seperti Telegram/WhatsApp) */}
+  <meta property="og:image" content={`${siteUrl}/img/logo.png`} />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:site_name" content={siteName} />
+  <meta name="twitter:image" content={`${siteUrl}/img/logo.png`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${siteName} – Expert Cybersecurity Services`} />
+  <meta name="twitter:description" content={siteDescription} />
         <meta name="theme-color" content="#DE1A34" />
       </head>
       <body>
