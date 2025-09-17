@@ -7,6 +7,8 @@ import ClientOnlyAOS from "./pages/api/clientAOS";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vulnerax.id";
 const siteName = "VulneraX";
 const siteDescription = "Transforming Vulnerabilities into Strengths: Expert cybersecurity services (Penetration Testing, Red Teaming, Vulnerability Assessment, System Hardening, Threat Hunting & IR, Ransomware Readiness).";
+const ogBanner = `${siteUrl}/img/og-banner.png`;
+const ogLogo = `${siteUrl}/img/logo.png`;
 const siteKeywords = [
   "Cybersecurity",
   "Penetration Testing",
@@ -46,20 +48,27 @@ export const metadata = {
     locale: "en_US",
     images: [
       {
-        url: `${siteUrl}/img/logo.png`,
+        url: ogBanner,
+        width: 1200,
+        height: 630,
+        alt: `${siteName} Open Graph Banner`,
+        type: 'image/svg+xml'
+      },
+      {
+        url: ogLogo,
         width: 512,
         height: 512,
         alt: `${siteName} Logo`,
         type: 'image/png'
       }
-    ],
+    ]
   },
   twitter: {
     card: "summary_large_image",
     site: "@VulneraX",
     title: `${siteName} – Expert Cybersecurity Services`,
     description: siteDescription,
-    images: [`${siteUrl}/img/logo.png`],
+    images: [ogBanner],
   },
   icons: {
     icon: [
@@ -111,15 +120,23 @@ export default function RootLayout({ children }) {
   <link rel="shortcut icon" href="/img/logo.png" />
   {/* Fallback explicit OG/Twitter meta (kadang diperlukan pada beberapa scraper seperti Telegram/WhatsApp) */}
   <meta property="og:image" content={`${siteUrl}/img/logo.png`} />
+  <meta property="og:image:secure_url" content={ogBanner} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:alt" content={`${siteName} Open Graph Banner`} />
+  <meta property="og:image" content={ogLogo} />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
   <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content={`${siteName} Logo`} />
   <meta property="og:site_name" content={siteName} />
-  <meta name="twitter:image" content={`${siteUrl}/img/logo.png`} />
+  <meta name="twitter:image" content={ogBanner} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${siteName} – Expert Cybersecurity Services`} />
   <meta name="twitter:description" content={siteDescription} />
         <meta name="theme-color" content="#DE1A34" />
+  <link rel="preload" as="image" href={ogBanner} imagesrcset={`${ogBanner} 1200w`} />
       </head>
       <body>
         <ClientOnlyAOS />
