@@ -13,25 +13,31 @@ export default function Certificate() {
       description: 'Certified Ethical Hacker. Expertise in penetration testing and ethical hacking techniques.',
     },
     {
-      id: 2,
-      image: '/img/certificate/CHFI.png',
-      name: 'CHFI',
-      description: 'Computer Hacking Forensic Investigator. Skills in digital forensics and incident response.',
-    },
-    {
       id: 3,
       image: '/img/certificate/CISA.png',
       name: 'CISA',
       description: 'Certified Information Systems Auditor. Proficiency in information systems auditing and control.',
     },
     {
+      id: 2,
+      image: '/img/certificate/CHFI.png',
+      name: 'CHFI',
+      description: 'Computer Hacking Forensic Investigator. Skills in digital forensics and incident response.',
+    },
+    {
       id: 4,
+      image: '/img/certificate/CTIA.png',
+      name: 'CTIA',
+      description: 'Certified Threat Intelligence Analyst. Skills in threat intelligence and analysis.',
+    },
+    {
+      id: 5,
       image: '/img/certificate/ComptiaSecurity.png',
       name: 'CompTIA Security+',
       description: 'Foundational knowledge in core security functions and hands-on skills.',
     },
     {
-      id: 5,
+      id: 6,
       image: '/img/certificate/ComptiaPentest.png',
       name: 'CompTIA PenTest+',
       description: 'Intermediate-level skills in penetration testing and vulnerability management.',
@@ -48,12 +54,7 @@ export default function Certificate() {
       name: 'Blockchain Security',
       description: 'Specialized knowledge in securing blockchain technology and decentralized systems.',
     },
-    {
-      id: 8,
-      image: '/img/certificate/CTIA.png',
-      name: 'CTIA',
-      description: 'Certified Threat Intelligence Analyst. Skills in threat intelligence and analysis.',
-    },
+
     {
       id: 9,
       image: '/img/certificate/PMP.png',

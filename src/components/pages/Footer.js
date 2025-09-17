@@ -96,7 +96,7 @@ export default function Footer() {
 
       <div className="container copyright text-center mt-4">
         <p>
-          <span>Copyright © 2024-2025</span>{' '}
+          <span>Copyright © 2025</span>{' '}
           <strong className="px-1 sitename">PT. Sentra Keamanan Digital</strong>{' '}
           <span>All Rights Reserved</span>
         </p>

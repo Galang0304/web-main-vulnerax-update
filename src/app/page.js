@@ -6,6 +6,7 @@ import ThreatsAnimation from '@/components/pages/ThreatsAnimation';
 import Features from "@/components/pages/Features";
 import Certification from "@/components/pages/Certification";
 import CallToAction from "@/components/pages/CallToAction";
+import Client from "@/components/pages/Client";
 import Contact from "@/components/pages/Contact";
 import Footer from "@/components/pages/Footer";
 
@@ -114,6 +115,7 @@ export default function Home() {
       <ThreatsAnimation />
       <Features />
       <CallToAction />
+      <Client />
       <Certification />
       <Contact />
       <Footer />
