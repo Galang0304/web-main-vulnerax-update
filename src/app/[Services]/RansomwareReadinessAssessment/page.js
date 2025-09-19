@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Contact from '@/components/pages/Contact';
+import { Lock, ShieldCheck } from "lucide-react";
 
 export const metadata = {
   title: 'Ransomeware Readiness Assessment - VulneraX',
@@ -30,148 +31,223 @@ export default function RansomwareReadinessAssessment() {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content="Ransomeware Assessment, Vulnerability, Cyber Security, Cyber Security Service" />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:image" content={metadata.openGraph.image} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:type" content={metadata.openGraph.type} />          <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />         <meta name="twitter:description" content={metadata.twitter.description} />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <meta name="robots" content="index, follow" />
-        <link rel="icon" href="/favicon.ico" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": metadata.title,
-            "description": metadata.description,
-            "url": metadata.openGraph.url
-          })
-        }} />
       </Head>
+
       <Header />
+
       <main className="main">
-        <section id="hero" className="hero section">
+        {/* HERO */}
+        <section
+          className="hero-section d-flex align-items-center text-light position-relative"
+          style={{
+            backgroundImage: "url('/img/RRA.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            minHeight: "90vh",
+            padding: "100px 20px",
+          }}
+        >
+          <div className="container text-center position-relative z-2">
+            <h1
+              className="display-3 fw-bold mb-3"
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "2px 2px 6px rgba(0,0,0,0.9), -2px -2px 6px rgba(0,0,0,0.9)",
+                background: "rgba(0,0,0,0.4)",
+                display: "inline-block",
+                padding: "10px 20px",
+                borderRadius: "8px",
+              }}
+            >
+              Ransomware <span style={{ color: "#e63946" }}>Readiness Assessment</span>
+            </h1>
 
-          <div className="container" data-aos="fade-up" data-aos-delay="100">
+            <p
+              className="lead mb-5"
+              style={{ color: "#f1faee", maxWidth: "800px", margin: "0 auto" }}
+            >
+              Risk Analysis and Expert Recommendations — Get a detailed report on risks
+              and actionable recommendations to enhance your{" "}
+              <strong style={{ color: "#e63946" }}>security</strong>.
+            </p>
 
-            <div className="row align-items-center">
-              <div className="col-lg-6">
-                <div className="hero-content" data-aos="fade-up" data-aos-delay="200">
-                  <h1 className="mb-4">
-                    Ransomware Readiness
-                    <span className="accent-text"> Assessment</span>
-                  </h1>
+            <div className="hero-buttons">
+              <Link
+                href={"/rra"}
+                className="btn btn-lg text-white"
+                style={{ backgroundColor: "#e63946", border: "none" }}
+              >
+                Take the Test <i className="bi bi-arrow-right h5 ms-2"></i>
+              </Link>
+            </div>
+          </div>
 
-                  <p className="mb-4 mb-md-5">
-                    Risk Analysis and Expert Recommendations
-                    Get a detailed report on risks and actionable recommendations to enhance your security
-                  </p>
+          {/* Overlay */}
+          <div
+            className="position-absolute top-0 start-0 w-100 h-100"
+            style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
+          />
+        </section>
 
-                  <div className="hero-buttons">
-                    <Link href={'/rra'} className='btn btn-primary me-0 me-sm-2 mx-1'>
-                      Take the Test <i className="bi bi-arrow-right h5 ms-2"></i>
-                    </Link>
+        {/* ABOUT SECTION */}
+        <section id="about-rra" className="py-8 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-lg-10">
+                <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+                  <div className="row g-0 align-items-center">
+                    {/* Icon */}
+                    <div className="col-md-4 d-flex justify-content-center align-items-center p-4 bg-gradient-to-br from-blue-500 to-indigo-600">
+                      <img
+                        src="/img/rra-icon/icon-3.png"
+                        alt="About Security Network"
+                        className="img-fluid"
+                        style={{ width: "160px", height: "150px" }}
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="col-md-8 p-4 bg-white">
+                      <h4 className="fw-bold text-dark mb-3">About Ransomware Threats</h4>
+                      <p className="text-muted small lh-base mb-2" style={{ textAlign: "justify" }}>
+                        In today's digital age, ransomware has become one of the most dangerous cyber threats, which can cripple business operations in seconds.
+                        This attack not only threatens your organization's critical data but also your reputation, customer trust, and business continuity.
+                      </p>
+                      <p className="text-muted small lh-base mb-0" style={{ textAlign: "justify" }}>
+                        <b>Our Ransomware Readiness Assessment (RRA)</b> service is designed to help your organization understand its level of preparedness for ransomware threats.
+                        With a simple yet impactful approach, we use an interactive quiz to provide initial insight into the strengths and weaknesses of your security system.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="col-lg-6">
-                <div className="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                  <Image
-                    src="/img/online-test.svg"
-                    alt="Hero Image"
-                    width={1080}
-                    height={826}
-                    className="img-fluid"
-                    priority
-                  />
+            {/* Cards */}
+            <div className="row mt-4 gy-3">
+              <div className="col-md-6">
+                <div
+                  className="card text-center border-0 p-3 h-100 rounded-3 transition"
+                  style={{
+                    border: "2px solid #e63946",
+                    boxShadow: "0 0 15px rgba(230, 57, 70, 0.6)",
+                    transition: "all 0.3s ease-in-out",
+                  }}
+                >
+                  <div className="d-flex justify-content-center mb-2">
+                    <div
+                      className="rounded-circle border border-2 border-primary p-2 d-flex align-items-center justify-content-center"
+                      style={{ width: "65px", height: "65px" }}
+                    >
+                      <Lock className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                  <h6 className="fw-bold mb-2">Why is it Important to Conduct an RRA?</h6>
+                  <p className="text-muted small mb-0" style={{ textAlign: "justify" }}>
+                    Ransomware is indiscriminate—both large and small organizations can be targeted.
+                    However, better-prepared organizations have a better chance of protecting their data
+                    and minimizing the impact of an attack. Through this service, we help you:
+                  </p>
+
+                  <ul className="text-muted small" style={{ textAlign: "justify" }}>
+                    <li><b>Increase Security Awareness</b> : Recognize potential risks you may have missed.</li>
+                    <li><b>Measure Readiness Practically</b> : Provides a realistic picture of your organization's current security position.</li>
+                    <li><b>Get Customized Recommendations</b> : Provides concrete steps to strengthen your defenses.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <div
+                  className="card text-center border-0 p-3 h-100 rounded-3 transition"
+                  style={{
+                    border: "2px solid #e63946",
+                    boxShadow: "0 0 15px rgba(230, 57, 70, 0.6)",
+                    transition: "all 0.3s ease-in-out",
+                  }}
+                >
+                  <div className="d-flex justify-content-center mb-2">
+                    <div
+                      className="rounded-circle border border-2 border-danger p-2 d-flex align-items-center justify-content-center"
+                      style={{ width: "65px", height: "65px" }}
+                    >
+                      <ShieldCheck className="w-6 h-6 text-danger" />
+                    </div>
+                  </div>
+                  <h6 className="fw-bold mb-2">Customized Recommendations</h6>
+                  <p className="text-muted small mb-0" style={{ textAlign: "justify" }}>
+                    We provide step-by-step guidance tailored to your organization&apos;s
+                    security posture, from prevention to recovery, ensuring stronger cyber resilience.
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
-
         </section>
 
-        <section id="service-details" className="service-details section">
-          <div className="container">
-            <div className="row gy-5">
-              <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div className="help-box d-flex flex-column justify-content-center align-items-center">
-                  <br/>
-                  <br/>
-                  <i className="bi bi-headset help-icon"></i>
-                  <h4>Have a Question?</h4>
-                  <p className="mb-4">Get direct advice and actionable solutions</p>
-                  
-                  <p className="d-flex align-items-center mt-2 mb-0">
-                    <i className="bi bi-telephone me-2"></i>
-                    <span>+62 852 4079 1254</span>
-                  </p>
-                  <p className="d-flex align-items-center mt-1 mb-0">
-                    <i className="bi bi-envelope me-2"></i>
-                    <a href="mailto:business@vulnerax.com">business@vulnerax.com</a>
-                  </p>
-                  <a href="#contact">Talk to us</a>
-                  <br/>
-                  <br/>
+        {/* HOW IS THE PROCESS */}
+        <section id="how-process" className="container py-4" style={{ marginTop: "0", marginBottom: "0" }}>
+          <div className="card border-0 rounded-4 shadow-lg p-5 bg-white hover:bg-gray-50 transition hover:-translate-y-2">
+            <div className="d-flex align-items-center justify-content-between mb-3">
+              <h3 className="fw-bold text-dark mb-0">How is the Process?</h3>
+              <i className="bi bi-gear-wide-connected text-danger" style={{ fontSize: "2.5rem" }}></i>
+            </div>
+
+            <p className="text-muted fs-6 lh-lg mb-3" style={{ textAlign: "justify" }}>
+              Our <b>Ransomware Readiness Assessment</b> follows a systematic methodology to ensure an effective evaluation of your organization's preparedness.
+              We provide an end-to-end analysis, starting from awareness to recovery, helping you identify vulnerabilities and strengthen your cyber resilience.
+            </p>
+            <p className="text-muted fs-6 lh-lg mb-4" style={{ textAlign: "justify" }}>
+              Below are the key steps in the process:
+            </p>
+
+            <div className="row gy-4">
+              <div className="col-md-3">
+                <div className="card text-center shadow-sm p-4 h-100 hover:shadow-md hover:scale-105 transition">
+                  <i className="bi bi-mouse2 fs-1 text-danger mb-3"></i>
+                  <h6 className="fw-bold">Step 1</h6>
+                  <p className="small">Click <b>Take the Test</b> button at the top of this page.</p>
                 </div>
               </div>
-              
-
-              <div className="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <br/>
-                <p>
-                  In today's digital age, ransomware has become one of the most dangerous cyber threats, which can cripple business operations in seconds. This attack not only threatens your organization's critical data but also your reputation, customer trust, and business continuity.
-                </p>
-                <p>
-                  <b>Our Ransomware Readiness Assessment (RRA)</b> service is designed to help your organization understand its level of preparedness for ransomware threats. With a simple yet impactful approach, we use an interactive quiz to provide initial insight into the strengths and weaknesses of your security system.
-                </p>
-
-                <h5><b>Why is it Important to Conduct an RRA?</b></h5>
-                <p>
-                  Ransomware is indiscriminate—both large and small organizations can be targeted. However, better-prepared organizations have a better chance of protecting their data and minimizing the impact of an attack. Through this service, we help you:
-                </p>
-                <ul>
-                  <li><i className="bi bi-check"></i> <span>Increase Security Awareness: Recognize potential risks you may have missed.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Measure Readiness Practically: Provides a realistic picture of your organization's current security position.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Get Customized Recommendations: Provides concrete steps to strengthen your defenses.</span></li>
-                </ul>
+              <div className="col-md-3">
+                <div className="card text-center shadow-sm p-4 h-100 hover:shadow-md hover:scale-105 transition">
+                  <i className="bi bi-ui-checks fs-1 text-danger mb-3"></i>
+                  <h6 className="fw-bold">Step 2</h6>
+                  <p className="small">Answer a series of simple questions by selecting the option that best describes your organization.</p>
+                </div>
               </div>
-              <div className="container" data-aos="fade-up" data-aos-delay="200">
-                <br />
-                <h5><b>How is the Process?</b></h5>
-                <p>
-                  Our Ransomware Readiness Assessment follows a systematic methodology to ensure an effective evaluation of your organization's preparedness.
-                  Below are the key steps in the process:
-                </p>
-                <ul>
-                  <li><i className="bi bi-check-circle"></i> <span><b>Step 1: </b> </span></li>
-                  <p> Click <b>Take the test</b> button at the top of this page</p>
-                  <li><i className="bi bi-check-circle"></i> <span><b>Step 2: </b> </span></li>
-                  <p>Answer a series of simple questions by selecting one of the three answers that best describes your organization.</p>
-                  <li><i className="bi bi-check-circle"></i> <span><b>Step 3:</b></span></li>
-                  <p> The final score will provide an overview of your security strengths and gaps in the areas of prevention, detection, response, and recovery.</p>
-                  <li><i className="bi bi-check-circle"></i> <span><b>Step 4:</b> </span></li>
-                  <p>Based on the results, you will receive step-by-step guidance in the <b>Report document</b> and key recommendations from <b>Score card</b> to strengthen your preparedness against for ransomware.</p>
-                </ul>
-                <br />
-
-                <h5><b>Start Your Security Journey Now!</b></h5>
-                <p>
-                  Prevent risks before it's too late. In just a few minutes, our quiz will help you understand your organization's readiness and provide valuable insights for more proactive action.
-                </p>
-
-                <h6><b>Recovery and Follow-Up</b></h6>
-                <p>
-                  We assist in system and data recovery, followed by ensuring that corrective measures have been implemented effectively.
-                </p>
+              <div className="col-md-3">
+                <div className="card text-center shadow-sm p-4 h-100 hover:shadow-md hover:scale-105 transition">
+                  <i className="bi bi-graph-up fs-1 text-danger mb-3"></i>
+                  <h6 className="fw-bold">Step 3</h6>
+                  <p className="small">Receive your score showing security strengths and gaps in prevention, detection, response, and recovery.</p>
+                </div>
+              </div>
+              <div className="col-md-3">
+                <div className="card text-center shadow-sm p-4 h-100 hover:shadow-md hover:scale-105 transition">
+                  <i className="bi bi-file-earmark-text fs-1 text-danger mb-3"></i>
+                  <h6 className="fw-bold">Step 4</h6>
+                  <p className="small">Get a detailed <b>Report document</b> and <b>Score card</b> with actionable recommendations.</p>
+                </div>
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Closing */}
+        <section className="container py-4" style={{ marginTop: "3", marginBottom: "3" }}>
+          <h5><b>Start Your Security Journey Now!</b></h5>
+          <p>
+            Prevent risks before it's too late. In just a few minutes, our quiz will help you understand your organization's readiness and provide valuable insights for more proactive action.
+          </p>
+          <h6><b>Recovery and Follow-Up</b></h6>
+          <p>
+            We assist in system and data recovery, followed by ensuring that corrective measures have been implemented effectively.
+          </p>
         </section>
       </main>
+
       <Contact />
       <Footer />
     </>

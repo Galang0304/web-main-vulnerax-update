@@ -1,151 +1,283 @@
+// app/service/SystemHardening/SystemHardeningClient.jsx
+'use client';
+
+import { useState } from "react";
 import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
-import Head from 'next/head';
 import Contact from '@/components/pages/Contact';
+import { ShieldCheck, Settings, CheckCircle2 } from "lucide-react";
 
-export const metadata = {
-  title: 'System Hardening - VulneraX',
-  description: 'VulneraX offers comprehensive System Hardening services to fortify your IT infrastructure against cyber threats. By applying industry best practices and tailored security configurations, we eliminate vulnerabilities and reduce your attack surface. Whether it’s securing servers, workstations, or network components, our system hardening solutions ensure your business runs with optimal security and resilience against cyber attacks.',
-  openGraph: {
-    title: 'System Hardening - VulneraX',
-    description: 'Strengthen your IT infrastructure with VulneraX System Hardening services. Reduce vulnerabilities and enhance the security of your systems, networks, and applications against emerging threats.',
-    image: 'https://vulnerax.com/img/logo.png',
-    url: 'https://vulnerax.com/service/SystemHardening',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'System Hardening - VulneraX',
-    description: 'Strengthen your IT infrastructure with VulneraX System Hardening services. Reduce vulnerabilities and enhance the security of your systems, networks, and applications against emerging threats.',
-    image: 'https://vulnerax.com/img/logo.png',
-  },
-};
+/**
+ * Client component: full UI + interactive FAQ
+ * This file intentionally contains no `export const metadata` — metadata lives in page.jsx
+ */
 
-export default function SystemHardening() {
+export default function SystemHardeningClient() {
+  // FAQ data (international-standards focused)
+  const faqs = [
+    {
+      q: "What is system hardening?",
+      a: "System hardening is the process of securing systems by reducing their attack surface, disabling unnecessary services, applying secure configurations, and aligning with standards such as CIS Benchmarks and NIST SP 800-53."
+    },
+    {
+      q: "Why is system hardening important?",
+      a: "Hardening reduces the risk of exploitation, improves resilience against attacks, helps meet regulatory requirements, and lowers the cost and impact of security incidents."
+    },
+    {
+      q: "Which standards does VulneraX follow for hardening?",
+      a: "We align our hardening with CIS Benchmarks, NIST SP 800-53, ISO/IEC 27001 controls, and relevant industry baselines (e.g., PCI DSS) as required by the client's compliance posture."
+    },
+    {
+      q: "How often should hardening be reviewed and updated?",
+      a: "Review hardening post major platform updates or architecture changes; otherwise perform a formal review at least annually and whenever threat models change."
+    },
+    {
+      q: "Will hardening impact system performance?",
+      a: "Proper hardening focuses on removing unnecessary services and tightening configs; when performed correctly it typically has minimal performance impact and often improves stability."
+    },
+  ];
+
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggle = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
+  const activities = [
+    {
+      icon: "bi-gear", // 🔧 untuk assessment
+      title: "Configuration Assessment",
+      desc: "Evaluate system configurations for compliance with CIS Benchmarks and NIST SP 800-53."
+    },
+    {
+      icon: "bi-slash-circle", // 🚫 untuk remove
+      title: "Remove Unnecessary Services",
+      desc: "Disable unused ports/services, remove unnecessary packages and reduce attack surface."
+    },
+    {
+      icon: "bi-shield-lock", // 🛡️ untuk secure policies
+      title: "Secure Defaults & Policies",
+      desc: "Harden default settings, enforce least privilege and strong authentication mechanisms."
+    },
+    {
+      icon: "bi-arrow-repeat", // 🔄 untuk maintenance
+      title: "Verification & Continuous Maintenance",
+      desc: "Automate configuration checks, vulnerability scanning, and patching cadence."
+    },
+  ];
+  
+
   return (
     <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content="System Hardening, Vulnerability, Cyber Security, Cyber Security Service" />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:image" content={metadata.openGraph.image} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:type" content={metadata.openGraph.type} />          <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />         <meta name="twitter:description" content={metadata.twitter.description} />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <meta name="robots" content="index, follow" />
-        <link rel="icon" href="/favicon.ico" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": metadata.title,
-            "description": metadata.description,
-            "url": metadata.openGraph.url
-          })
-        }} />
-      </Head>
       <Header />
+
       <main className="main">
-        <br /><br />
+        {/* HERO */}
+        <section
+          className="hero-section d-flex align-items-center text-light position-relative"
+          style={{
+            backgroundImage: "url('/threatHunting.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            minHeight: "90vh",
+            padding: "100px 20px",
+          }}
+          aria-hidden="true"
+        >
+          <div className="container text-center position-relative z-2">
+            <h1
+              className="display-3 fw-bold mb-3"
+              style={{
+                color: "#ffffff",
+                textShadow: "2px 2px 6px rgba(0,0,0,0.9)",
+                background: "rgba(0,0,0,0.4)",
+                display: "inline-block",
+                padding: "10px 20px",
+                borderRadius: "8px",
+              }}
+            >
+              System <span style={{ color: "#e63946" }}>Hardening</span>
+            </h1>
 
-        <section id="service-details" className="service-details section">
+            <p className="lead mb-5" style={{ color: "#f1faee", maxWidth: "800px", margin: "0 auto" }}>
+              Strengthen your IT infrastructure by minimizing vulnerabilities and aligning configurations with global security standards.
+            </p>
+          </div>
+
+          <div className="position-absolute top-0 start-0 w-100 h-100" style={{ backgroundColor: "rgba(0,0,0,0.65)" }} />
+        </section>
+
+        {/* ABOUT */}
+        <section id="about-hardening" className="py-8 bg-gradient-to-br from-gray-50 to-gray-100">
           <div className="container">
-            <div className="row gy-5">
-              <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div className="help-box d-flex flex-column justify-content-center align-items-center">
-                  <br/>
-                  <br/>
-                  <i className="bi bi-headset help-icon"></i>
-                  <h4>Have a Question?</h4>
-                  <p className="mb-4">Get direct advice and actionable solutions</p>
-                  
-                  <p className="d-flex align-items-center mt-2 mb-0">
-                    <i className="bi bi-telephone me-2"></i>
-                    <span>+62 852 4079 1254</span>
-                  </p>
-                  <p className="d-flex align-items-center mt-1 mb-0">
-                    <i className="bi bi-envelope me-2"></i>
-                    <a href="mailto:business@vulnerax.com">business@vulnerax.com</a>
-                  </p>
-                  <a href="#contact">Talk to us</a>
-                  <br/>
-                  <br/>
+            <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+              <div className="row g-0 align-items-center">
+                <div className="col-md-4 d-flex justify-content-center align-items-center p-4 bg-gradient-to-br from-red-500 to-red-700">
+                  <img src="/img/rra-icon/icon-1.png" alt="System Hardening" className="img-fluid" style={{ width: 160, height: 150 }} />
                 </div>
-              </div>
 
-              <div className="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <br/>
-                <h3>System Hardening</h3>
-                <p>
-                  In an increasingly complex cyber threat environment, system hardening is a crucial step to protect your IT infrastructure from exploitation. System hardening involves strengthening systems and applications by reducing the attack surface and minimizing the risk of security vulnerabilities. This approach helps maintain data integrity, protect business assets, and ensure compliance with international security standards such as CIS Benchmarks and NIST SP 800-53.
-                </p>
-                <p>
-                  System resilience is not just about defense but also about reducing attack opportunities. Our System Hardening services leverage a layered approach to protect your IT infrastructure from exploitation. VulneraX helps you implement optimal settings and best practices to strengthen your system's integrity.
-                </p>
-                <p>
-                  System Hardening is the process of improving security by eliminating vulnerabilities caused by default configurations, unnecessary software, or insecure services. The goal is to ensure that your systems are protected from cyber threats through systematic and proactive measures.
-                </p>
-
-                <h5><b>Key Objectives of System Hardening:</b></h5>
-                <ul>
-                  <li><i className="bi bi-check"></i> <span>Reducing the attack surface of systems and applications.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Enhancing system strength to combat security threats.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Ensuring configurations align with security standards such as CIS Benchmarks.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Assisting in meeting regulatory security and audit requirements.</span></li>
-                </ul>
-              </div>
-
-              <div className="container">
-                <br /><br />
-                <h5><b>Our Methodology:</b></h5>
-                <p>
-                  Our system hardening services follow internationally recognized methodologies to deliver reliable and comprehensive results. Below are the main stages in the system hardening process:
-                </p>
-                <ul>
-                  <li><i className="bi bi-check-circle"></i> <span><b>Configuration Assessment (Security Standard Compliance):</b></span></li>
-                  <p>We evaluate system configurations to identify non-compliance with security standards such as CIS Benchmarks and NIST SP 800-53. This stage includes an in-depth analysis of your servers, operating systems, software, and applications.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span><b>Implementation of Security Controls:</b></span></li>
-                  <p>Based on the assessment results, we implement security controls such as removing unnecessary services, configuring access policies, and strengthening software configurations. This process follows CIS and NIST guidelines to ensure optimal security.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span><b>Validation and Verification:</b></span></li>
-                  <p>After implementation, we conduct testing to verify that the applied measures effectively reduce security risks. This validation includes light penetration testing to ensure no security gaps remain.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span><b>Security Maintenance:</b></span></li>
-                  <p>We assist in developing procedures for maintaining security configurations to ensure your systems remain secure over time. This includes routine monitoring, system updates, and periodic audits to sustain ongoing security.</p>
-                </ul>
-
-                <h5><b>Benefits of this Service:</b></h5>
-                <ul>
-                  <li><i className="bi bi-1-circle-fill"></i> <span>Reduce the attack surface with proper security configurations.</span></li>
-                  <li><i className="bi bi-2-circle-fill"></i> <span>Protect critical systems from unauthorized access.</span></li>
-                  <li><i className="bi bi-3-circle-fill"></i> <span>Provide guidelines for long-term security maintenance.</span></li>
-                </ul>
-
-                <h5><b>Resources Used:</b></h5>
-                <p>
-                  We utilize global security standard guidelines to ensure effective system hardening implementation, including:
-                </p>
-                <ul>
-                  <li><i className="bi bi-dot"></i> <span><b>CIS Benchmarks:</b> Security configuration standards for hardware, operating systems, and applications.</span></li>
-                  <li><i className="bi bi-dot"></i> <span><b>NIST SP 800-53:</b> A framework of security controls to protect federal information systems.</span></li>
-                </ul>
-
-                <h5><b>Benefits of System Hardening:</b></h5>
-                <ul>
-                  <li><i className="bi bi-dot"></i> <span>Reduce the risk of security vulnerability exploitation.</span></li>
-                  <li><i className="bi bi-dot"></i> <span>Improve system reliability and performance.</span></li>
-                  <li><i className="bi bi-dot"></i> <span>Increase customer trust in your organization's security.</span></li>
-                  <li><i className="bi bi-dot"></i> <span>Fulfill regulatory and security audit requirements.</span></li>
-                </ul>
+                <div className="col-md-8 p-4 bg-white">
+                  <h4 className="fw-bold text-dark mb-3">About System Hardening</h4>
+                  <p className="text-muted small lh-base mb-2" style={{ textAlign: "justify" }}>
+                    In an increasingly complex cyber threat environment, system hardening is a crucial step to protect your IT infrastructure from exploitation.
+                    It involves strengthening systems and applications by reducing the attack surface and minimizing security misconfigurations.
+                  </p>
+                  <p className="text-muted small lh-base mb-0" style={{ textAlign: "justify" }}>
+                    Our services implement industry best practices and automated controls to ensure systems remain secure, compliant, and resilient over time.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* OBJECTIVES TIMELINE (kept as-is) */}
+        <section className="container py-5">
+          <h3 className="fw-bold text-center mb-5">Key Objectives of System Hardening</h3>
+
+          <div className="position-relative" style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div className="position-absolute top-0 bottom-0 start-50 translate-middle-x border-start border-2 border-danger" />
+
+            <div className="row g-0 mb-5 align-items-center position-relative">
+              <div className="col-md-6 text-end pe-4">
+                <div className="bg-white shadow-sm rounded-3 p-4 d-inline-block text-start">
+                  <h6 className="fw-bold text-danger mb-1">Reducing Attack Surface</h6>
+                  <p className="text-muted mb-0 small">Minimizing vulnerabilities in systems and applications to reduce entry points for attackers.</p>
+                </div>
+              </div>
+              <div className="col-md-6 ps-4 d-none d-md-block" />
+              <div className="position-absolute top-50 start-50 translate-middle bg-danger text-white d-flex align-items-center justify-content-center rounded-circle shadow" style={{ width: 45, height: 45, zIndex: 1 }}>
+                <i className="bi bi-shield-lock-fill fs-5" />
+              </div>
+            </div>
+
+            <div className="row g-0 mb-5 align-items-center position-relative">
+              <div className="col-md-6 d-none d-md-block" />
+              <div className="col-md-6 ps-4">
+                <div className="bg-white shadow-sm rounded-3 p-4 d-inline-block text-start">
+                  <h6 className="fw-bold text-danger mb-1">Enhancing System Strength</h6>
+                  <p className="text-muted mb-0 small">Improving system resilience to withstand and mitigate security threats effectively.</p>
+                </div>
+              </div>
+              <div className="position-absolute top-50 start-50 translate-middle bg-danger text-white d-flex align-items-center justify-content-center rounded-circle shadow" style={{ width: 45, height: 45, zIndex: 1 }}>
+                <i className="bi bi-shield-check fs-5" />
+              </div>
+            </div>
+
+            <div className="row g-0 mb-5 align-items-center position-relative">
+              <div className="col-md-6 text-end pe-4">
+                <div className="bg-white shadow-sm rounded-3 p-4 d-inline-block text-start">
+                  <h6 className="fw-bold text-danger mb-1">Compliance with Standards</h6>
+                  <p className="text-muted mb-0 small">Ensuring configurations align with CIS Benchmarks and best security practices.</p>
+                </div>
+              </div>
+              <div className="col-md-6 ps-4 d-none d-md-block" />
+              <div className="position-absolute top-50 start-50 translate-middle bg-danger text-white d-flex align-items-center justify-content-center rounded-circle shadow" style={{ width: 45, height: 45, zIndex: 1 }}>
+                <i className="bi bi-journal-check fs-5" />
+              </div>
+            </div>
+
+            <div className="row g-0 align-items-center position-relative">
+              <div className="col-md-6 d-none d-md-block" />
+              <div className="col-md-6 ps-4">
+                <div className="bg-white shadow-sm rounded-3 p-4 d-inline-block text-start">
+                  <h6 className="fw-bold text-danger mb-1">Regulatory & Audit Readiness</h6>
+                  <p className="text-muted mb-0 small">Helping organizations meet regulatory requirements and pass audits smoothly.</p>
+                </div>
+              </div>
+              <div className="position-absolute top-50 start-50 translate-middle bg-danger text-white d-flex align-items-center justify-content-center rounded-circle shadow" style={{ width: 45, height: 45, zIndex: 1 }}>
+                <i className="bi bi-file-earmark-text-fill fs-5" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section className="py-5 bg-light">
+  <div className="container">
+    <h3 className="fw-bold text-center mb-4">How Does System Hardening Work?</h3>
+    <div className="d-flex flex-column gap-3">
+      {activities.map((step, i) => (
+        <div
+          key={i}
+          className="card border-0 shadow-sm p-4 d-flex flex-row align-items-center"
+          style={{ borderLeft: "5px solid #e63946" }}
+        >
+          <i className={`bi ${step.icon} text-danger fs-1 me-3`} />
+          <div>
+            <h6 className="fw-bold mb-1">{step.title}</h6>
+            <p className="small text-muted mb-0">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+        {/* FEATURES */}
+        <section className="py-5">
+          <div className="container">
+            <h3 className="fw-bold text-center mb-4">Industry-leading Features</h3>
+            <div className="row g-4 text-center">
+              {[
+                { icon: <Settings className="text-danger" size={40} />, text: "Compromise assessment offers a full picture of incidents, reducing investigation time." },
+                { icon: <ShieldCheck className="text-danger" size={40} />, text: "Memory forensics and behavior analysis to detect unknown malicious programs." },
+                { icon: <CheckCircle2 className="text-danger" size={40} />, text: "Active threat hunting with visualization to correlate compromised endpoints." },
+              ].map((f, i) => (
+                <div className="col-md-4" key={i}>
+                  <div className="card border-0 shadow-sm p-4 h-100 rounded-3">
+                    <div className="mb-3">{f.icon}</div>
+                    <p className="small text-muted mb-0">{f.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="container my-5">
+          <h3 className="fw-bold mb-4 text-center">Frequently Asked Questions (FAQs)</h3>
+          <div className="accordion">
+            {faqs.map((item, i) => (
+              <div key={i} className="accordion-item mb-2 border rounded">
+                <button
+                  className="accordion-button w-100 text-start"
+                  onClick={() => toggle(i)}
+                  style={{
+                    background: openIndexes.includes(i) ? "#e63946" : "#f8f9fa",
+                    color: openIndexes.includes(i) ? "#fff" : "#000",
+                    border: "none",
+                    padding: "1rem",
+                    cursor: "pointer",
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.q}
+                </button>
+                <div
+                  style={{
+                    maxHeight: openIndexes.includes(i) ? "500px" : "0",
+                    overflow: "hidden",
+                    transition: "all 0.4s ease",
+                    padding: openIndexes.includes(i) ? "1rem" : "0 1rem",
+                    background: "#f8f9fa",
+                  }}
+                >
+                  <p className="mb-0">{item.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
       </main>
+
       <Contact />
       <Footer />
     </>

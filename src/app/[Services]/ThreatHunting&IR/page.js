@@ -1,134 +1,208 @@
+'use client';
+import Head from 'next/head';
 import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Contact from '@/components/pages/Contact';
-import Head from 'next/head';
+import {
+  FaSearch,
+  FaUserSecret,
+  FaExclamationTriangle,
+  FaFileAlt,
+  FaRedo,
+  FaShieldAlt,
+} from "react-icons/fa";
 
-export const metadata = {
-  title: 'Threat Hunting & Incident Response - VulneraX',
-  description: 'VulneraX Threat Hunting & Incident Response services provide proactive measures to detect, analyze, and respond to security incidents. Our expert team hunts for hidden threats, identifies potential vulnerabilities, and ensures rapid detection and mitigation of breaches. We help organizations recover quickly from incidents, minimize impact, and build stronger defenses against future attacks by leveraging the latest threat intelligence and response techniques.',
-  openGraph: {
-    title: 'Threat Hunting & Incident Response - VulneraX',
-    description: 'Detect and respond to advanced threats with VulneraX Threat Hunting & Incident Response services. Proactively identify security risks and mitigate potential breaches through rapid detection and response strategies.',
-    image: 'https://vulnerax.com/img/logo.png',
-    url: 'https://vulnerax.com/service/ThreatHunting&IR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Threat Hunting & Incident Response - VulneraX',
-    description: 'Detect and respond to advanced threats with VulneraX Threat Hunting & Incident Response services. Proactively identify security risks and mitigate potential breaches through rapid detection and response strategies.',
-    image: 'https://vulnerax.com/img/logo.png',
-  },
-};
-
-export default function ThreatHunting() {
+export default function ThreatHuntingIR() {
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content="Threat Hunting, Incident Response, Vulnerability, Cyber Security, Cyber Security Service" />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta property="og:description" content={metadata.openGraph.description} />
-        <meta property="og:image" content={metadata.openGraph.image} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:type" content={metadata.openGraph.type} />          <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:title" content={metadata.twitter.title} />         <meta name="twitter:description" content={metadata.twitter.description} />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <meta name="robots" content="index, follow" />
-        <link rel="icon" href="/favicon.ico" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": metadata.title,
-            "description": metadata.description,
-            "url": metadata.openGraph.url
-          })
-        }} />
+        <title>Threat Hunting & Incident Response - VulneraX</title>
       </Head>
+
       <Header />
-      <main className="main">
-        <br /><br />
 
-        <section id="service-details" className="service-details section">
-          <div className="container">
-            <div className="row gy-5">
-              <div className="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div className="help-box d-flex flex-column justify-content-center align-items-center">
-                  <br/>
-                  <br/>
-                  <i className="bi bi-headset help-icon"></i>
-                  <h4>Have a Question?</h4>
-                  <p className="mb-4">Get direct advice and actionable solutions</p>
-                  
-                  <p className="d-flex align-items-center mt-2 mb-0">
-                    <i className="bi bi-telephone me-2"></i>
-                    <span>+62 852 4079 1254</span>
-                  </p>
-                  <p className="d-flex align-items-center mt-1 mb-0">
-                    <i className="bi bi-envelope me-2"></i>
-                    <a href="mailto:business@vulnerax.com">business@vulnerax.com</a>
-                  </p>
-                  <a href="#contact">Talk to us</a>
-                  <br/>
-                  <br/>
-                </div>
+      {/* HERO */}
+      <section
+        className="d-flex align-items-center text-light position-relative"
+        style={{
+          backgroundImage: "url('/threatHunting.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "90vh",
+          padding: "100px 20px",
+        }}
+      >
+        <div className="container text-center position-relative z-2">
+          <h1
+            className="display-4 fw-bold mb-3"
+            style={{
+              color: "#fff",
+              textShadow: "0 0 15px rgba(0,0,0,0.7)",
+              background: "rgba(0,0,0,0.5)",
+              padding: "12px 24px",
+              borderRadius: "10px",
+              display: "inline-block",
+            }}
+          >
+            Threat Hunting <span style={{ color: "#e63946" }}>& Incident Response</span>
+          </h1>
+          <p
+            className="lead mt-3"
+            style={{ color: "#f1faee", maxWidth: "820px", margin: "0 auto" }}
+          >
+            Respond to <strong style={{ color: "#e63946" }}>security incidents quickly</strong> and 
+            prevent future attacks through proactive <strong style={{ color: "#e63946" }}>threat hunting</strong>.
+          </p>
+        </div>
+        <div
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
+        />
+      </section>
+
+      {/* ABOUT */}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">Threat Hunting & Incident Response</h3>
+
+        <div className="row justify-content-center">
+          <div className="col-md-10">
+            <div className="about-card shadow-sm border-0 rounded-3 h-100 p-5 text-center">
+              {/* ICON BESAR DI TENGAH */}
+              <div className="about-icon mb-4">
+                <FaShieldAlt size={100} />
               </div>
-
-              <div className="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <br/>
-                <h3>Threat Hunting & Incident Response</h3>
-                <p>
-                  In an increasingly connected world, cyber threats can arise at any time. Our <b>Threat Hunting & Incident Response</b> services are designed to help your organization and business respond to security incidents quickly and effectively. We understand that once an attack has occurred, timing is everything. Therefore, we not only focus on recovery after an incident but also on preventing future incidents by understanding attack patterns and techniques used by perpetrators.
-                </p>
-                <p>
-                  This service is a proactive approach to identifying and addressing threats before they can cause damage. The goal is to provide deep insight into incidents that occur and the steps that need to be taken to improve security.
-                </p>
-                <p>Main Objectives of <b>Threat Hunting & Incident Response</b>:</p>
-                <ul>
-                  <li><i className="bi bi-check"></i> <span>Identify and address threats that may not be detected by traditional security systems.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Minimize the impact of security incidents on your business.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Provide strategic recommendations for security improvements and enhancements.</span></li>
-                  <li><i className="bi bi-check"></i> <span>Build a comprehensive incident response plan for future readiness.</span></li>
-                </ul>
-              </div>
-
-              <div className="container">
-                <br /><br />
-                <h5><b>Our Methodology:</b></h5>
-                <p>
-                  Our Threat Hunting & Incident Response services follow a systematic methodology to ensure an effective response to incidents. Below are the key phases:
-                </p>
-                <ul>
-                  <li><i className="bi bi-check-circle"></i> <span>Detection and Analysis:</span></li>
-                  <p>Using advanced analytical techniques, we detect suspicious activities and identify potential threats within your system.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span>Incident Investigation:</span></li>
-                  <p>Once an incident is detected, we conduct an in-depth investigation to uncover root causes, attack patterns, and the impact on your business.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span>Impact Assessment:</span></li>
-                  <p>We evaluate the business impact of the incident to plan appropriate recovery actions.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span>Reporting and Recommendations:</span></li>
-                  <p>We deliver detailed reports that include:</p>
-                  <ul>
-                    <li><i className="bi bi-check"></i> <span>Executive summaries for non-technical stakeholders.</span></li>
-                    <li><i className="bi bi-check"></i> <span>Findings and analysis of the incident.</span></li>
-                    <li><i className="bi bi-check"></i> <span>Strategic recommendations for remediation and future prevention.</span></li>
-                  </ul>
-                  <br />
-                  <li><i className="bi bi-check-circle"></i> <span>Recovery and Follow-Up:</span></li>
-                  <p>We assist in system and data recovery, followed by ensuring that corrective measures have been implemented effectively.</p>
-
-                  <li><i className="bi bi-check-circle"></i> <span>Impact Assessment:</span></li>
-                  <p>We collaborate with your team to develop a comprehensive incident response plan, including training and simulations to improve readiness for future threats.</p>
-                </ul>
-              </div>
+              {/* TEKS */}
+              <p className="text-muted lh-lg mb-0" style={{ textAlign: "justify" }}>
+                In an increasingly connected world, cyber threats can arise at any time. 
+                Our Threat Hunting & Incident Response services are designed to help your 
+                organization and business respond to security incidents quickly and effectively. 
+                We understand that once an attack has occurred, timing is everything. Therefore, 
+                we not only focus on recovery after an incident but also on preventing future 
+                incidents by understanding attack patterns and techniques used by perpetrators.
+              </p>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+
+        <style jsx>{`
+          .about-card {
+            background: #fff;
+            transition: all 0.3s ease;
+          }
+          .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+          }
+          .about-icon {
+            color: #e63946;
+            transition: transform 0.3s ease, color 0.3s ease;
+          }
+          .about-card:hover .about-icon {
+            transform: scale(1.1);
+            color: #b71c1c;
+          }
+        `}</style>
+      </section>
+
+      {/* OBJECTIVES */}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">
+          Main Objectives of Threat Hunting & Incident Response
+        </h3>
+
+        <div className="d-flex flex-column gap-3">
+          {[
+            {
+              icon: <FaSearch size={30} style={{ color: "#e63946" }} />,
+              title: "Threat Identification",
+              text: "Identify and address threats that may not be detected by traditional security systems."
+            },
+            {
+              icon: <FaExclamationTriangle size={30} style={{ color: "#e63946" }} />,
+              title: "Impact Minimization",
+              text: "Minimize the impact of security incidents on your business."
+            },
+            {
+              icon: <FaShieldAlt size={30} style={{ color: "#e63946" }} />,
+              title: "Strategic Recommendations",
+              text: "Provide strategic recommendations for security improvements and enhancements."
+            },
+            {
+              icon: <FaUserSecret size={30} style={{ color: "#e63946" }} />,
+              title: "Future Readiness",
+              text: "Build a comprehensive incident response plan for future readiness."
+            }
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="d-flex align-items-start bg-white shadow-sm rounded-3 p-3 objective-item"
+            >
+              <div className="me-3">{item.icon}</div>
+              <div>
+                <h6 className="fw-bold mb-1">{item.title}</h6>
+                <p className="text-muted small mb-0">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <style jsx>{`
+          .objective-item {
+            transition: all 0.3s ease;
+            border: 1px solid #f1f1f1;
+          }
+          .objective-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+          }
+        `}</style>
+      </section>
+
+      {/* METHODOLOGY */}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">Our Methodology</h3>
+
+        <div className="row g-4">
+          {[
+            { icon: <FaSearch size={40} />, title: "Detection and Analysis", text: "Using advanced analytical techniques, we detect suspicious activities and identify potential threats within your system." },
+            { icon: <FaUserSecret size={40} />, title: "Incident Investigation", text: "Once an incident is detected, we conduct an in-depth investigation to uncover root causes, attack patterns, and the impact on your business." },
+            { icon: <FaExclamationTriangle size={40} />, title: "Impact Assessment", text: "We evaluate the business impact of the incident to plan appropriate recovery actions." },
+            { icon: <FaFileAlt size={40} />, title: "Reporting and Recommendations", text: "We deliver detailed reports including executive summaries, technical findings, and strategic recommendations." },
+            { icon: <FaRedo size={40} />, title: "Recovery and Follow-Up", text: "We assist in system and data recovery, followed by ensuring corrective measures have been implemented effectively." },
+            { icon: <FaShieldAlt size={40} />, title: "Future Readiness", text: "We develop a comprehensive incident response plan, including training and simulations to improve readiness." },
+          ].map((step, i) => (
+            <div className="col-md-6 col-lg-4" key={i}>
+              <div className="method-card shadow-sm p-4 text-center h-100">
+                <div className="method-icon mb-3">{step.icon}</div>
+                <h6 className="fw-bold">{step.title}</h6>
+                <p className="text-muted small">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <style jsx>{`
+          .method-card {
+            background: #fff;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+          }
+          .method-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 10px 28px rgba(230, 57, 70, 0.25);
+          }
+          .method-icon {
+            color: #e63946;
+            font-size: 32px;
+            transition: transform 0.3s ease, color 0.3s ease;
+          }
+          .method-card:hover .method-icon {
+            transform: scale(1.15);
+            color: #b71c1c;
+          }
+        `}</style>
+      </section>
+
       <Contact />
       <Footer />
     </>

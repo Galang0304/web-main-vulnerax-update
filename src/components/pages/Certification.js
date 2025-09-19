@@ -13,16 +13,16 @@ export default function Certificate() {
       description: 'Certified Ethical Hacker. Expertise in penetration testing and ethical hacking techniques.',
     },
     {
-      id: 3,
-      image: '/img/certificate/CISA.png',
-      name: 'CISA',
-      description: 'Certified Information Systems Auditor. Proficiency in information systems auditing and control.',
-    },
-    {
       id: 2,
       image: '/img/certificate/CHFI.png',
       name: 'CHFI',
       description: 'Computer Hacking Forensic Investigator. Skills in digital forensics and incident response.',
+    },
+    {
+      id: 3,
+      image: '/img/certificate/CISA.png',
+      name: 'CISA',
+      description: 'Certified Information Systems Auditor. Proficiency in information systems auditing and control.',
     },
     {
       id: 4,
@@ -43,18 +43,17 @@ export default function Certificate() {
       description: 'Intermediate-level skills in penetration testing and vulnerability management.',
     },
     {
-      id: 6,
+      id: 7,
       image: '/img/certificate/Opsecx_MAS.png',
       name: 'OPSECX MAS',
       description: 'Expertise in mobile application security and advanced mobile threats.',
     },
     {
-      id: 7,
+      id: 8,
       image: '/img/certificate/Blockchain.png',
       name: 'Blockchain Security',
       description: 'Specialized knowledge in securing blockchain technology and decentralized systems.',
     },
-
     {
       id: 9,
       image: '/img/certificate/PMP.png',
@@ -89,7 +88,7 @@ export default function Certificate() {
     margin: '0 auto',
     lineHeight: '1.8',
   };
-  
+
   const certificationCardStyle = {
     backgroundColor: '#ffffff',
     borderRadius: '15px',
@@ -104,7 +103,10 @@ export default function Certificate() {
         <div className="section-title text-center mb-5">
           <h2 style={titleStyle}>Our Certifications</h2>
           <p style={descriptionStyle}>
-            At <strong>VulneraX</strong>, our commitment to excellence is demonstrated through the certifications we hold. Our team is composed of cybersecurity professionals certified in globally recognized standards and frameworks, including CISA, CEH, CHFI, OSCP, ISO 27001, and CompTIA Security+, among others. These credentials reflect our expertise in threat detection, incident response, secure architecture, and compliance, ensuring our solutions meet the highest industry standards.
+            At <strong>VulneraX</strong>, our commitment to excellence is demonstrated through the
+            certifications we hold. Our team is composed of cybersecurity professionals certified in
+            globally recognized standards and frameworks, including CISA, CEH, CHFI, OSCP, ISO 27001,
+            and CompTIA Security+, among others.
           </p>
         </div>
 
@@ -114,7 +116,10 @@ export default function Certificate() {
               <motion.div
                 className="certification-item text-center"
                 style={certificationCardStyle}
-                whileHover={{ scale: 1.05, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)' }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+                }}
               >
                 <div className="certification-img mb-3">
                   <Image
