@@ -1,24 +1,55 @@
 'use client';
+import { useState } from "react";
 import Head from 'next/head';
 import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Contact from '@/components/pages/Contact';
-import {
-  FaSearch,
-  FaUserSecret,
-  FaExclamationTriangle,
-  FaFileAlt,
-  FaRedo,
-  FaShieldAlt,
-} from "react-icons/fa";
+import {FaSearch, FaUserSecret, FaExclamationTriangle, FaFileAlt, FaRedo, FaShieldAlt, FaChevronDown,} from "react-icons/fa";
 
 export default function ThreatHuntingIR() {
+  // FAQ
+  const [openIndexes, setOpenIndexes] = useState([]);
+  const toggleFAQ = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
+  // FAQ
+  const faqs = [
+    {
+      q: "What is Threat Hunting, and how does it differ from traditional monitoring?",
+      a: "Threat Hunting is a proactive process where analysts actively search for hidden threats within an organization’s environment, going beyond automated alerts. Unlike traditional monitoring, it relies on hypotheses, threat intelligence, and human expertise to uncover advanced persistent threats (APTs).",
+    },
+    {
+      q: "Which international frameworks guide Incident Response?",
+      a: "Incident Response follows frameworks such as NIST SP 800-61 (Computer Security Incident Handling Guide), ISO/IEC 27035, and SANS Incident Handler’s Handbook, ensuring that detection, containment, eradication, and recovery follow recognized best practices.",
+    },
+    {
+      q: "How often should organizations conduct Threat Hunting?",
+      a: "Threat Hunting should be performed continuously or at least quarterly. Many organizations integrate threat hunting into their Security Operations Center (SOC) workflows for ongoing proactive defense.",
+    },
+    {
+      q: "What deliverables are expected from an Incident Response engagement?",
+      a: "Deliverables include detailed incident reports, forensic analysis results, executive summaries, recommendations for security improvements, and a revised incident response plan to prevent recurrence.",
+    },
+    {
+      q: "How do Threat Hunting and Incident Response complement each other?",
+      a: "Threat Hunting helps detect potential threats before they escalate into incidents, while Incident Response provides a structured approach to contain, eradicate, and recover when incidents occur. Together, they form a complete cyber defense cycle.",
+    },
+    {
+      q: "Does Incident Response cause downtime for business operations?",
+      a: "A well-executed Incident Response minimizes downtime. Actions are taken in a controlled and prioritized manner, with predefined playbooks ensuring critical business systems remain as operational as possible during containment and recovery.",
+    },
+  ];
+
   return (
     <>
       <Head>
         <title>Threat Hunting & Incident Response - VulneraX</title>
       </Head>
-
       <Header />
 
       {/* HERO */}
@@ -63,15 +94,12 @@ export default function ThreatHuntingIR() {
       {/* ABOUT */}
       <section className="container my-5">
         <h3 className="fw-bold mb-4 text-center">Threat Hunting & Incident Response</h3>
-
         <div className="row justify-content-center">
           <div className="col-md-10">
             <div className="about-card shadow-sm border-0 rounded-3 h-100 p-5 text-center">
-              {/* ICON BESAR DI TENGAH */}
               <div className="about-icon mb-4">
                 <FaShieldAlt size={100} />
               </div>
-              {/* TEKS */}
               <p className="text-muted lh-lg mb-0" style={{ textAlign: "justify" }}>
                 In an increasingly connected world, cyber threats can arise at any time. 
                 Our Threat Hunting & Incident Response services are designed to help your 
@@ -203,6 +231,84 @@ export default function ThreatHuntingIR() {
         `}</style>
       </section>
 
+      {/*FAQ*/}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">
+          Frequently Asked Questions (FAQs)
+        </h3>
+        <div className="faq-wrapper">
+          {faqs.map((item, i) => {
+            const isOpen = openIndexes.includes(i);
+            return (
+              <div
+                key={i}
+                className="faq-item mb-3 shadow-sm rounded-3 overflow-hidden"
+              >
+                <button
+                  onClick={() => toggleFAQ(i)}
+                  className={`faq-question w-100 d-flex justify-content-between align-items-center`}
+                >
+                  {item.q}
+                  <span className={`faq-icon ${isOpen ? "open" : ""}`}>
+                    <FaChevronDown />
+                  </span>
+                </button>
+                <div className={`faq-answer ${isOpen ? "show" : ""}`}>
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <style jsx>{`
+          .faq-item {
+            background: #fff;
+            transition: all 0.3s ease;
+          }
+          .faq-question {
+            background: #f8f9fa;
+            border: none;
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease, color 0.3s ease;
+          }
+          .faq-question:hover {
+            background: #e63946;
+            color: #fff;
+          }
+          .faq-icon {
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+          }
+          .faq-icon.open {
+            transform: rotate(180deg);
+          }
+          .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.25rem;
+            background: #f8f9fa;
+            transition: all 0.4s ease;
+          }
+          .faq-answer.show {
+            max-height: 500px;
+            padding: 1rem 1.25rem;
+          }
+          .faq-answer p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+          }
+        `}</style>
+      </section>
       <Contact />
       <Footer />
     </>

@@ -756,10 +756,13 @@ section,
 }
 
 @media (max-width: 992px) {
-  .hero .hero-content {
-    text-align: center;
-    margin-bottom: 3rem;
+  .hero .hero-image img {
+    display: block; /* Pastikan gambar muncul */
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Pusatkan gambar */
   }
+
 
   .hero .hero-content h1 {
     font-size: 2.5rem;
@@ -1589,35 +1592,116 @@ section,
 /*--------------------------------------------------------------
 # Clients Section
 --------------------------------------------------------------*/
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
-}
-
-.clients .swiper-slide img:hover {
-  filter: none;
-  opacity: 1;
-}
-
-.clients .swiper-wrapper {
-  height: auto;
-}
-
-.clients .swiper-pagination {
-  margin-top: 20px;
+#clients.clients {
   position: relative;
 }
 
-.clients .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  opacity: 1;
-  background-color: color-mix(in srgb, var(--default-color), transparent 80%);
+#clients .clients-intro-text {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  line-height: 1.55;
 }
 
-.clients .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
+.clients-logos-wrapper {
+  margin-top: 10px;
+}
+
+.client-logo-item {
+  position: relative;
+}
+
+.client-logo-box {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: 12px;
+  padding: 20px; /* Ditambah dari 18px untuk ruang lebih */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Ditambah dari 10px untuk jarak lebih */
+  transition: all .35s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  min-height: 250px; /* Ditambah dari 150px */
+  height: 200px; /* Ditambah dari 150px */
+}
+
+.client-logo-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.client-logo-img {
+  filter: grayscale(100%) brightness(0.85);
+  opacity: .85;
+  transition: all .35s ease;
+  max-height: 70px; /* Ditambah dari 60px */
+  object-fit: contain;
+  width: 100%;
+  display: block;
+}
+
+.client-logo-box:hover .client-logo-img {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+}
+
+.client-logo-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  line-height: 1.3;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .client-logo-name { 
+    font-size: 0.8rem; 
+  }
+  .client-logo-box {
+    min-height: 180px; /* Ditambah dari 160px */
+    height: 180px; /* Ditambah dari 160px */
+  }
+  .client-logo-img {
+    max-height: 80px; /* Ditambah dari 70px */
+  }
+}
+
+@media (max-width: 575px) {
+  .client-logo-name { 
+    font-size: 0.7rem; 
+  }
+  .client-logo-box {
+    padding: 18px; /* Ditambah dari 15px */
+    min-height: 160px; /* Ditambah dari 140px */
+    height: 160px; /* Ditambah dari 140px */
+  }
+  .client-logo-img { 
+    max-height: 65px; /* Ditambah dari 55px */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-box, 
+  .client-logo-box:hover, 
+  .client-logo-img, 
+  .client-logo-box:hover .client-logo-img { 
+    transition: none; 
+  }
+}
+
+/* Override problematic img-fluid rule */
+@media (max-width: 992px) {
+  .img-fluid {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -2069,6 +2153,30 @@ section,
 
 .call-to-action-2 .cta-btn:hover {
   border-color: var(--contrast-color);
+}
+
+.cta-card {
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(222, 26, 52, 0.4);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 96, 0, 0.6);
+}
+
+.cta-card:active {
+  transform: scale(0.95);
 }
 
 /*--------------------------------------------------------------

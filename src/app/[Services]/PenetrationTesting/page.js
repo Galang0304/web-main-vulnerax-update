@@ -4,10 +4,9 @@ import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Contact from '@/components/pages/Contact';
 import { useState } from 'react';
-import { FaUserSecret, FaUserShield, FaLaptopCode, FaChevronDown } from "react-icons/fa";
+import { FaUserSecret, FaUserShield, FaUserFriends, FaChevronDown } from "react-icons/fa";
 
 export default function PenetrationTesting() {
-  // State untuk FAQ multi-open
   const [openIndexes, setOpenIndexes] = useState([]);
 
   const toggleFAQ = (index) => {
@@ -236,7 +235,7 @@ export default function PenetrationTesting() {
           </div>
           <div className="col-md-4">
             <div className="card h-100 p-4 shadow-sm border-0 text-center">
-              <FaUserShield className="text-danger fs-1 mb-3" />
+              <FaUserFriends  className="text-danger fs-1 mb-3" />
               <h5 className="fw-bold">Gray Box Testing</h5>
               <p className="text-muted small">
                 Testers have partial knowledge of the system. Combines internal and external perspectives to evaluate insider threats and external risks simultaneously.
@@ -245,7 +244,7 @@ export default function PenetrationTesting() {
           </div>
           <div className="col-md-4">
             <div className="card h-100 p-4 shadow-sm border-0 text-center">
-              <FaLaptopCode className="text-danger fs-1 mb-3" />
+              <FaUserShield  className="text-danger fs-1 mb-3" />
               <h5 className="fw-bold">White Box Testing</h5>
               <p className="text-muted small">
                 Testers have full knowledge of the system, including architecture and source code, providing the most comprehensive evaluation of security controls.
@@ -257,7 +256,7 @@ export default function PenetrationTesting() {
 
       {/* FAQ SECTION */}
       <section className="container my-5">
-        <h3 className="fw-bold mb-4 text-center">FAQs</h3>
+        <h3 className="fw-bold mb-4 text-center">Frequently Asked Questions (FAQs)</h3>
         <div className="faq-wrapper">
           {faqs.map((item, i) => {
             const isOpen = openIndexes.includes(i);
@@ -272,66 +271,64 @@ export default function PenetrationTesting() {
                     <FaChevronDown />
                   </span>
                 </button>
-                <div className={`faq-answer ${isOpen ? "show"
-: ""}`}>
-<p>{item.a}</p>
-</div>
-</div>
-);
-})}
-</div>
+                <div className={`faq-answer ${isOpen ? "show": ""}`}>
+                <p>{item.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-<style jsx>{`
-.faq-item {
-background: #fff;
-transition: all 0.3s ease;
-}
-.faq-question {
-background: #f8f9fa;
-border: none;
-padding: 1rem 1.25rem;
-font-weight: 500;
-font-size: 1rem;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: space-between;
-transition: background 0.3s ease, color 0.3s ease;
-}
-.faq-question:hover {
-background: #e63946;
-color: #fff;
-}
-.faq-icon {
-transition: transform 0.3s ease;
-display: flex;
-align-items: center;
-}
-.faq-icon.open {
-transform: rotate(180deg);
-}
-.faq-answer {
-max-height: 0;
-overflow: hidden;
-padding: 0 1.25rem;
-background: #f8f9fa;
-transition: all 0.4s ease;
-}
-.faq-answer.show {
-max-height: 500px;
-padding: 1rem 1.25rem;
-}
-.faq-answer p {
-margin: 0;
-font-size: 0.95rem;
-color: #555;
-line-height: 1.6;
-}
-`}</style>
-</section>
-
-<Contact />
-<Footer />
-</>
+        <style jsx>{`
+        .faq-item {
+        background: #fff;
+        transition: all 0.3s ease;
+        }
+        .faq-question {
+        background: #f8f9fa;
+        border: none;
+        padding: 1rem 1.25rem;
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: background 0.3s ease, color 0.3s ease;
+        }
+        .faq-question:hover { 
+        background: #e63946;
+        color: #fff;
+        }
+        .faq-icon {
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        }
+        .faq-icon.open {
+        transform: rotate(180deg);
+        }
+        .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 1.25rem;
+        background: #f8f9fa;
+        transition: all 0.4s ease;
+        }
+        .faq-answer.show {
+        max-height: 500px;
+        padding: 1rem 1.25rem;
+        }
+        .faq-answer p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        }
+        `}</style>
+      </section>
+    <Contact />
+  <Footer />
+  </>
 );
 }

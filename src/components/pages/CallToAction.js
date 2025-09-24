@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -30,8 +31,8 @@ export default function CallToAction() {
     position: 'relative',
     zIndex: 2,
     maxWidth: '800px',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Warna latar belakang transparan
-    backdropFilter: 'blur(10px)', 
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
     padding: '40px',
     borderRadius: '20px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -52,18 +53,25 @@ export default function CallToAction() {
     marginBottom: '40px',
   };
 
-  const buttonStyle = {
+  const cardStyle = {
+    display: 'inline-block',
     padding: '15px 40px',
     borderRadius: '50px',
-    background: 'linear-gradient(90deg, #E60040 100%)',
+    background: 'var(--accent-color)', // Menggunakan warna merah dari --accent-color (#DE1A34)
     border: 'none',
     color: '#fff',
     fontWeight: '600',
     textTransform: 'uppercase',
     letterSpacing: '1px',
-    boxShadow: '0 4px 15px rgba(230, 0, 64, 0.4)',
+    boxShadow: '0 4px 15px rgba(222, 26, 52, 0.4)', // Bayangan merah sesuai tema
     textDecoration: 'none',
     transition: 'all 0.3s ease',
+    cursor: 'pointer',
+  };
+
+  const cardHoverStyle = {
+    scale: 1.05,
+    boxShadow: '0 6px 20px rgba(255, 96, 0, 0.6)',
   };
 
   return (
@@ -78,14 +86,15 @@ export default function CallToAction() {
         >
           <h2 style={headingStyle}>Are you truly prepared for a Ransomware Attack?</h2>
           <p style={paragraphStyle}>Assess your organization's readiness against the most devastating cyber threats with our comprehensive assessment. Don't wait until it's too late.</p>
-          <motion.a
+          <motion.div
             href={'/rra'}
-            style={buttonStyle}
-            whileHover={{ scale: 1.05, boxShadow: '0 6px 20px rgba(255, 96, 0, 0.6)' }}
+            style={cardStyle}
+            whileHover={cardHoverStyle}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = '/rra'} // Simulasi link dengan onClick
           >
             Ransomware Readiness Assessment
-          </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -1,8 +1,8 @@
+
 'use client';
 
 import Image from 'next/image';
 
-// Client logos data (bisa dipindah ke config terpisah jika perlu)
 const clients = [
   { src: '/img/clients/Client-1.png', alt: 'PT Lontar Riset Indonesia Logo', name: 'PT Lontar Riset Indonesia' },
   { src: '/img/clients/Client-2.png', alt: 'PT. OCBC Sekuritas Indonesia Logo', name: 'PT. OCBC Sekuritas Indonesia' },
@@ -13,7 +13,7 @@ const clients = [
 
 // Inline style diselaraskan dengan pola di Certification.js
 const sectionStyle = {
-  padding: '80px 0',
+  padding: '60px 0',
   backgroundColor: '#f8f9fa',
   fontFamily: "'Inter', sans-serif",
 };
@@ -31,6 +31,18 @@ const descriptionStyle = {
   maxWidth: '800px',
   margin: '0 auto',
   lineHeight: '1.8',
+};
+
+const imageContainerStyle = {
+  position: 'relative',
+  width: '100%',
+  height: '80px', // Sesuaikan dengan proporsi card yang lebih panjang
+};
+
+const cardStyle = {
+  minHeight: '200px', // Sesuaikan dengan CSS global (desktop)
+  height: '200px',    // Sesuaikan dengan CSS global (desktop)
+  padding: '22px',    // Sesuaikan dengan CSS global
 };
 
 export default function Client() {
@@ -52,17 +64,19 @@ export default function Client() {
               data-aos="zoom-in"
               data-aos-delay={150 + i * 50}
             >
-              <div className="client-logo-box flex-column">
-                <Image
-                  src={c.src}
-                  alt={c.alt}
-                  width={260}
-                  height={140}
-                  className="img-fluid client-logo-img"
-                  sizes="(max-width: 575px) 140px, (max-width: 992px) 200px, 260px"
-                  priority={i < 2}
-                />
-                <p className="client-logo-name text-center mb-0 mt-3">{c.name}</p>
+              <div className="client-logo-box d-flex flex-column align-items-center justify-content-center" style={cardStyle}>
+                <div style={imageContainerStyle}>
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    fill
+                    className="img-fluid client-logo-img"
+                    sizes="(max-width: 575px) 100vw, (max-width: 768px) 50vw, (max-width: 992px) 33vw, 20vw"
+                    style={{ objectFit: 'contain' }}
+                    priority={i < 2}
+                  />
+                </div>
+                <p className="client-logo-name text-center mb-0 mt-2" style={{ fontSize: '0.75rem' }}>{c.name}</p>
               </div>
             </div>
           ))}

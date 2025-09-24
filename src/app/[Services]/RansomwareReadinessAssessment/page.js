@@ -1,3 +1,5 @@
+'use client';
+import { useState } from "react";
 import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Head from 'next/head';
@@ -5,8 +7,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Contact from '@/components/pages/Contact';
 import { Lock, ShieldCheck } from "lucide-react";
+import { FaChevronDown } from "react-icons/fa";
 
-export const metadata = {
+export default function ProfessionalRedTeaming() {
+  const metadata = {
   title: 'Ransomeware Readiness Assessment - VulneraX',
   description: 'Ransomware Readiness Assessment by VulneraX will evaluates your organization’s preparedness against ransomware threats. Our experts analyze your current security posture, detect vulnerabilities, and assess the resilience of your backup systems. We provide actionable recommendations to strengthen defenses, ensure continuity, and mitigate the risk of ransomware attacks, protecting your critical assets and sensitive data from encryption or extortion.',
   openGraph: {
@@ -24,7 +28,47 @@ export const metadata = {
   },
 };
 
-export default function RansomwareReadinessAssessment() {
+  const [openIndexes, setOpenIndexes] = useState([]);
+  const toggleFAQ = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
+  const faqs = [
+    {
+      q: "What is a Ransomware Readiness Assessment (RRA)?",
+      a: "RRA is a structured evaluation designed to measure an organization's preparedness to prevent, detect, respond to, and recover from ransomware attacks. It aligns with frameworks like NIST Cybersecurity Framework (CSF), ISO/IEC 27001, and CISA Ransomware Readiness Guide.",
+    },
+    {
+      q: "Why is RRA important for organizations today?",
+      a: "Ransomware is one of the fastest-growing global threats. An RRA helps organizations identify weaknesses in backup strategies, incident response, and endpoint protection, ensuring resilience against encryption and extortion attempts.",
+    },
+    {
+      q: "Which international standards guide the assessment?",
+      a: "Our RRA follows best practices from NIST SP 800-53, ISO/IEC 27035 (Incident Response), ENISA Threat Landscape, and CISA’s Ransomware Readiness Assessment framework.",
+    },
+    {
+      q: "What are the main focus areas of an RRA?",
+      a: "Key areas include user awareness and phishing resilience, backup and recovery strategy validation, endpoint and network defenses, patch management, and incident response maturity.",
+    },
+    {
+      q: "What deliverables can we expect from an RRA?",
+      a: "Deliverables include a tailored readiness scorecard, executive summary, detailed technical report, detection and response gap analysis, and prioritized recommendations for hardening defenses.",
+    },
+    {
+      q: "How often should an RRA be conducted?",
+      a: "It is recommended to conduct an RRA annually, or after major infrastructure changes, mergers, or significant incidents that may affect ransomware resilience.",
+    },
+    {
+      q: "Will the RRA disrupt business operations?",
+      a: "No. The assessment is conducted in a non-intrusive way, ensuring zero disruption to production systems. It focuses on evaluating processes, controls, and readiness posture.",
+    },
+  ];
+
+
   return (
     <>
       <Head>
@@ -124,7 +168,7 @@ export default function RansomwareReadinessAssessment() {
               </div>
             </div>
 
-            {/* Cards */}
+            {/* Card */}
             <div className="row mt-4 gy-3">
               <div className="col-md-6">
                 <div
@@ -235,6 +279,80 @@ export default function RansomwareReadinessAssessment() {
           </div>
         </section>
 
+        {/* ===== FAQ Section ===== */}
+        <section className="container my-5">
+          <h3 className="fw-bold mb-4 text-center">Frequently Asked Questions (FAQs)</h3>
+          <div className="faq-wrapper">
+            {faqs.map((item, i) => {
+              const isOpen = openIndexes.includes(i);
+              return (
+                <div key={i} className="faq-item mb-3 shadow-sm rounded-3 overflow-hidden">
+                  <button
+                    onClick={() => toggleFAQ(i)}
+                    className="faq-question w-100 d-flex justify-content-between align-items-center"
+                  >
+                    {item.q}
+                    <span className={`faq-icon ${isOpen ? "open" : ""}`}>
+                      <FaChevronDown />
+                    </span>
+                  </button>
+                  <div className={`faq-answer ${isOpen ? "show" : ""}`}>
+                    <p>{item.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <style jsx>{`
+            .faq-item {
+              background: #fff;
+              transition: all 0.3s ease;
+            }
+            .faq-question {
+              background: #f8f9fa;
+              border: none;
+              padding: 1rem 1.25rem;
+              font-weight: 500;
+              font-size: 1rem;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              transition: background 0.3s ease, color 0.3s ease;
+            }
+            .faq-question:hover {
+              background: #e63946;
+              color: #fff;
+            }
+            .faq-icon {
+              transition: transform 0.3s ease;
+              display: flex;
+              align-items: center;
+            }
+            .faq-icon.open {
+              transform: rotate(180deg);
+            }
+            .faq-answer {
+              max-height: 0;
+              overflow: hidden;
+              padding: 0 1.25rem;
+              background: #f8f9fa;
+              transition: all 0.4s ease;
+            }
+            .faq-answer.show {
+              max-height: 500px;
+              padding: 1rem 1.25rem;
+            }
+            .faq-answer p {
+              margin: 0;
+              font-size: 0.95rem;
+              color: #555;
+              line-height: 1.6;
+            }
+          `}</style>
+        </section>
+
         {/* Closing */}
         <section className="container py-4" style={{ marginTop: "3", marginBottom: "3" }}>
           <h5><b>Start Your Security Journey Now!</b></h5>
@@ -247,7 +365,6 @@ export default function RansomwareReadinessAssessment() {
           </p>
         </section>
       </main>
-
       <Contact />
       <Footer />
     </>

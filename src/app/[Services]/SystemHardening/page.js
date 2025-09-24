@@ -6,47 +6,11 @@ import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Contact from '@/components/pages/Contact';
 import { ShieldCheck, Settings, CheckCircle2 } from "lucide-react";
+import { FaChevronDown } from "react-icons/fa";
 
-/**
- * Client component: full UI + interactive FAQ
- * This file intentionally contains no `export const metadata` — metadata lives in page.jsx
- */
 
-export default function SystemHardeningClient() {
-  // FAQ data (international-standards focused)
-  const faqs = [
-    {
-      q: "What is system hardening?",
-      a: "System hardening is the process of securing systems by reducing their attack surface, disabling unnecessary services, applying secure configurations, and aligning with standards such as CIS Benchmarks and NIST SP 800-53."
-    },
-    {
-      q: "Why is system hardening important?",
-      a: "Hardening reduces the risk of exploitation, improves resilience against attacks, helps meet regulatory requirements, and lowers the cost and impact of security incidents."
-    },
-    {
-      q: "Which standards does VulneraX follow for hardening?",
-      a: "We align our hardening with CIS Benchmarks, NIST SP 800-53, ISO/IEC 27001 controls, and relevant industry baselines (e.g., PCI DSS) as required by the client's compliance posture."
-    },
-    {
-      q: "How often should hardening be reviewed and updated?",
-      a: "Review hardening post major platform updates or architecture changes; otherwise perform a formal review at least annually and whenever threat models change."
-    },
-    {
-      q: "Will hardening impact system performance?",
-      a: "Proper hardening focuses on removing unnecessary services and tightening configs; when performed correctly it typically has minimal performance impact and often improves stability."
-    },
-  ];
 
-  const [openIndexes, setOpenIndexes] = useState([]);
-
-  const toggle = (index) => {
-    if (openIndexes.includes(index)) {
-      setOpenIndexes(openIndexes.filter((i) => i !== index));
-    } else {
-      setOpenIndexes([...openIndexes, index]);
-    }
-  };
-
+export default function SystemHardening() {
   const activities = [
     {
       icon: "bi-gear", // 🔧 untuk assessment
@@ -69,7 +33,41 @@ export default function SystemHardeningClient() {
       desc: "Automate configuration checks, vulnerability scanning, and patching cadence."
     },
   ];
+
+
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  const toggleFAQ = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
   
+  // FAQ
+  const faqs = [
+    {
+      q: "What is system hardening?",
+      a: "System hardening is the process of securing systems by reducing their attack surface, disabling unnecessary services, applying secure configurations, and aligning with standards such as CIS Benchmarks and NIST SP 800-53."
+    },
+    {
+      q: "Why is system hardening important?",
+      a: "Hardening reduces the risk of exploitation, improves resilience against attacks, helps meet regulatory requirements, and lowers the cost and impact of security incidents."
+    },
+    {
+      q: "Which standards does VulneraX follow for hardening?",
+      a: "We align our hardening with CIS Benchmarks, NIST SP 800-53, ISO/IEC 27001 controls, and relevant industry baselines (e.g., PCI DSS) as required by the client's compliance posture."
+    },
+    {
+      q: "How often should hardening be reviewed and updated?",
+      a: "Review hardening post major platform updates or architecture changes; otherwise perform a formal review at least annually and whenever threat models change."
+    },
+    {
+      q: "Will hardening impact system performance?",
+      a: "Proper hardening focuses on removing unnecessary services and tightening configs; when performed correctly it typically has minimal performance impact and often improves stability."
+    },
+  ];
 
   return (
     <>
@@ -198,25 +196,25 @@ export default function SystemHardeningClient() {
 
         {/* HOW IT WORKS */}
         <section className="py-5 bg-light">
-  <div className="container">
-    <h3 className="fw-bold text-center mb-4">How Does System Hardening Work?</h3>
-    <div className="d-flex flex-column gap-3">
-      {activities.map((step, i) => (
-        <div
-          key={i}
-          className="card border-0 shadow-sm p-4 d-flex flex-row align-items-center"
-          style={{ borderLeft: "5px solid #e63946" }}
-        >
-          <i className={`bi ${step.icon} text-danger fs-1 me-3`} />
-          <div>
-            <h6 className="fw-bold mb-1">{step.title}</h6>
-            <p className="small text-muted mb-0">{step.desc}</p>
+          <div className="container">
+           <h3 className="fw-bold text-center mb-4">How Does System Hardening Work?</h3>
+            <div className="d-flex flex-column gap-3">
+              {activities.map((step, i) => (
+              <div
+              key={i}
+              className="card border-0 shadow-sm p-4 d-flex flex-row align-items-center"
+              style={{ borderLeft: "5px solid #e63946" }}
+              >
+              <i className={`bi ${step.icon} text-danger fs-1 me-3`} />
+              <div>
+              <h6 className="fw-bold mb-1">{step.title}</h6>
+              <p className="small text-muted mb-0">{step.desc}</p>
+              </div>
+            </div>
+            ))}
           </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+          </div>
+        </section>
 
 
         {/* FEATURES */}
@@ -240,44 +238,85 @@ export default function SystemHardeningClient() {
           </div>
         </section>
 
-        {/* FAQ SECTION */}
-        <section className="container my-5">
-          <h3 className="fw-bold mb-4 text-center">Frequently Asked Questions (FAQs)</h3>
-          <div className="accordion">
-            {faqs.map((item, i) => (
-              <div key={i} className="accordion-item mb-2 border rounded">
+        {/* ===== FAQ Section ===== */}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">
+          Frequently Asked Questions (FAQs)
+        </h3>
+        <div className="faq-wrapper">
+          {faqs.map((item, i) => {
+            const isOpen = openIndexes.includes(i);
+            return (
+              <div
+                key={i}
+                className="faq-item mb-3 shadow-sm rounded-3 overflow-hidden"
+              >
                 <button
-                  className="accordion-button w-100 text-start"
-                  onClick={() => toggle(i)}
-                  style={{
-                    background: openIndexes.includes(i) ? "#e63946" : "#f8f9fa",
-                    color: openIndexes.includes(i) ? "#fff" : "#000",
-                    border: "none",
-                    padding: "1rem",
-                    cursor: "pointer",
-                    fontWeight: 500,
-                  }}
+                  onClick={() => toggleFAQ(i)}
+                  className={`faq-question w-100 d-flex justify-content-between align-items-center`}
                 >
                   {item.q}
+                  <span className={`faq-icon ${isOpen ? "open" : ""}`}>
+                    <FaChevronDown />
+                  </span>
                 </button>
-                <div
-                  style={{
-                    maxHeight: openIndexes.includes(i) ? "500px" : "0",
-                    overflow: "hidden",
-                    transition: "all 0.4s ease",
-                    padding: openIndexes.includes(i) ? "1rem" : "0 1rem",
-                    background: "#f8f9fa",
-                  }}
-                >
-                  <p className="mb-0">{item.a}</p>
+                <div className={`faq-answer ${isOpen ? "show" : ""}`}>
+                  <p>{item.a}</p>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        <style jsx>{`
+          .faq-item {
+            background: #fff;
+            transition: all 0.3s ease;
+          }
+          .faq-question {
+            background: #f8f9fa;
+            border: none;
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease, color 0.3s ease;
+          }
+          .faq-question:hover {
+            background: #e63946;
+            color: #fff;
+          }
+          .faq-icon {
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+          }
+          .faq-icon.open {
+            transform: rotate(180deg);
+          }
+          .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.25rem;
+            background: #f8f9fa;
+            transition: all 0.4s ease;
+          }
+          .faq-answer.show {
+            max-height: 500px;
+            padding: 1rem 1.25rem;
+          }
+          .faq-answer p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+          }
+        `}</style>
         </section>
-
       </main>
-
       <Contact />
       <Footer />
     </>

@@ -1,4 +1,6 @@
 'use client';
+import { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import Head from "next/head";
 import Header from "@/components/pages/Header";
 import Footer from "@/components/pages/Footer";
@@ -38,6 +40,44 @@ export default function ProfessionalRedTeaming() {
       icon: "bi-cloud-arrow-down",
       title: "Exfiltration & Impact",
       desc: "Stealing sensitive data or simulating ransomware attacks.",
+    },
+  ];
+
+  // FAQ State 
+  const [openIndexes, setOpenIndexes] = useState([]);
+  const toggleFAQ = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
+  // FAQ 
+  const faqs = [
+    {
+      q: "What is the main difference between Red Teaming and Penetration Testing?",
+      a: "Penetration testing focuses on identifying and exploiting technical vulnerabilities, while Red Teaming takes a holistic approach to simulate real-world attacks across people, processes, and technology, testing the organization’s overall detection and response capabilities.",
+    },
+    {
+      q: "How does Red Teaming align with international standards?",
+      a: "Professional Red Teaming engagements are guided by standards and frameworks such as MITRE ATT&CK, NIST SP 800-115, and PTES to ensure systematic, repeatable, and internationally recognized methodologies.",
+    },
+    {
+      q: "What kind of threats are simulated during Red Teaming?",
+      a: "Red Teaming simulates advanced persistent threats (APTs), insider threats, phishing campaigns, supply chain attacks, and lateral movement scenarios to evaluate the resilience of an organization.",
+    },
+    {
+      q: "How often should Red Teaming exercises be conducted?",
+      a: "Organizations are recommended to conduct Red Teaming at least annually, or when undergoing significant infrastructure, application, or business process changes that could alter the threat landscape.",
+    },
+    {
+      q: "What are the expected deliverables from a Red Teaming engagement?",
+      a: "You will receive an executive summary for management, detailed technical reports, evidence of attack simulations, assessment of detection/response effectiveness, and actionable recommendations for improvements.",
+    },
+    {
+      q: "Does Red Teaming impact business operations?",
+      a: "Red Teaming is carefully scoped and executed with minimal business disruption. The engagements are conducted ethically and with prior agreements to ensure that critical systems and services remain operational.",
     },
   ];
 
@@ -93,161 +133,174 @@ export default function ProfessionalRedTeaming() {
           </p>
         </div>
 
-        {/* Background overlay */}
         <div
           className="position-absolute top-0 start-0 w-100 h-100"
           style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
         />
       </section>
 
-      {/* ===== Details Section ===== */}
       <section id="details" className="py-5">
         <div className="container">
-          {/* What is Red Teaming */}
+          {/* ABOUT*/}
           <h3 className="fw-bold mb-4 text-center">What is Red Teaming?</h3>
           <p className="mx-auto text-center" style={{ maxWidth: "900px" }}>
-            Professional Red Teaming is a real-world attack simulation service designed to help organizations understand and strengthen their security resilience.
-            The service not only focuses on finding technical vulnerabilities but also tests the extent to which organizations are able to detect, respond to,
-            and address threats that have the potential to disrupt operations, damage data, or impact reputation.
-            With a holistic approach, we evaluate security across all aspects—digital, physical, and human—to provide relevant and actionable insights.
-            Our experienced team works with modern techniques that are constantly evolving, ensuring simulations that are realistic and appropriate to today's
-            security challenges. We believe that rock-solid security starts with a deep understanding of risk, and that's exactly what we offer: the opportunity to
-            learn, improve, and walk away better prepared for the future.
+            Professional Red Teaming is a real-world attack simulation service
+            designed to help organizations understand and strengthen their
+            security resilience. The service not only focuses on finding
+            technical vulnerabilities but also tests the extent to which
+            organizations are able to detect, respond to, and address threats
+            that have the potential to disrupt operations, damage data, or
+            impact reputation. With a holistic approach, we evaluate security
+            across all aspects—digital, physical, and human—to provide relevant
+            and actionable insights. Our experienced team works with modern
+            techniques that are constantly evolving, ensuring simulations that
+            are realistic and appropriate to today's security challenges. We
+            believe that rock-solid security starts with a deep understanding of
+            risk, and that's exactly what we offer: the opportunity to learn,
+            improve, and walk away better prepared for the future.
           </p>
 
-          {/* ===== Key Activities ===== */}
+          {/*Key Activities*/}
           <h5 className="mt-5 fw-bold text-center">Key Activities</h5>
-<div className="row mt-4 g-4">
-  {activities.map((item, idx) => (
-    <div
-      key={idx}
-      className={`col-lg-6`} // otomatis 2 kolom di layar besar
-    >
-      <div
-        className="p-4 bg-white rounded shadow-sm d-flex align-items-start gap-3 h-100"
-        style={{ borderLeft: "6px solid #e63946" }}
-      >
-        <div
-          className="d-flex align-items-center justify-content-center"
-          style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "12px",
-            backgroundColor: "#fff0f0",
-            flexShrink: 0,
-          }}
-        >
-          <i
-            className={`bi ${item.icon} text-danger`}
-            style={{ fontSize: "28px" }}
-          ></i>
-        </div>
-        <div>
-          <h6 className="fw-bold mb-2">{item.title}</h6>
-          <p className="text-muted small mb-0">{item.desc}</p>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+          <div className="row mt-4 g-4">
+            {activities.map((item, idx) => (
+              <div key={idx} className={`col-lg-6`}>
+                <div
+                  className="p-4 bg-white rounded shadow-sm d-flex align-items-start gap-3 h-100"
+                  style={{ borderLeft: "6px solid #e63946" }}
+                >
+                  <div
+                    className="d-flex align-items-center justify-content-center"
+                    style={{
+                      width: "60px",
+                      height: "60px",
+                      borderRadius: "12px",
+                      backgroundColor: "#fff0f0",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <i
+                      className={`bi ${item.icon} text-danger`}
+                      style={{ fontSize: "28px" }}
+                    ></i>
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-2">{item.title}</h6>
+                    <p className="text-muted small mb-0">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-          {/* ===== Red Teaming vs Penetration Testing (Service Process style) ===== */}
+          {/*Red Teaming vs Penetration Testing*/}
           <h5 className="mt-5 fw-bold text-center text-uLowerCase">
-          Red Teaming vs Penetration Testing
+            Red Teaming vs Penetration Testing
           </h5>
 
-<div
-  className="mt-4 p-4 rounded shadow-sm"
-  style={{ backgroundColor: "#fdfaf6" }}
->
-  <div className="d-flex">
-    <div style={{ flex: 1 }}>
-      <h6 className="fw-bold text-danger mb-3">
-        🔍 Red Teaming is more in-depth than Penetration Testing
-      </h6>
-      <p className="text-muted">
-        While penetration testing evaluates specific vulnerabilities over a
-        limited time, <span className="fw-bold">Red Teaming</span> takes a
-        holistic approach, focusing on:
-      </p>
+          <div
+            className="mt-4 p-4 rounded shadow-sm"
+            style={{ backgroundColor: "#fdfaf6" }}
+          >
+            <div className="d-flex">
+              <div style={{ flex: 1 }}>
+                <h6 className="fw-bold text-danger mb-3">
+                  🔍 Red Teaming is more in-depth than Penetration Testing
+                </h6>
+                <p className="text-muted">
+                  While penetration testing evaluates specific vulnerabilities
+                  over a limited time,{" "}
+                  <span className="fw-bold">Red Teaming</span> takes a holistic
+                  approach, focusing on:
+                </p>
 
-      <ul className="mb-0 list-unstyled">
-  <li className="mb-3 d-flex align-items-start">
-    <span
-      className="me-3 d-inline-flex align-items-center justify-content-center"
-      style={{
-        width: "24px",
-        height: "24px",
-        borderRadius: "50%",
-        backgroundColor: "#e63946",
-        color: "#fff",
-        fontSize: "0.85rem",
-        fontWeight: 700,
-        flexShrink: 0,
-      }}
-      aria-hidden="true"
-    >
-      1
-    </span>
-    <div>
-      <span className="fw-semibold">Mimicking Real-World Threats:</span>{" "}
-      <span className="text-muted">Simulations that replicate real attack scenarios.</span>
-    </div>
-  </li>
+                <ul className="mb-0 list-unstyled">
+                  <li className="mb-3 d-flex align-items-start">
+                    <span
+                      className="me-3 d-inline-flex align-items-center justify-content-center"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        backgroundColor: "#e63946",
+                        color: "#fff",
+                        fontSize: "0.85rem",
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                      aria-hidden="true"
+                    >
+                      1
+                    </span>
+                    <div>
+                      <span className="fw-semibold">
+                        Mimicking Real-World Threats:
+                      </span>{" "}
+                      <span className="text-muted">
+                        Simulations that replicate real attack scenarios.
+                      </span>
+                    </div>
+                  </li>
 
-  <li className="mb-3 d-flex align-items-start">
-    <span
-      className="me-3 d-inline-flex align-items-center justify-content-center"
-      style={{
-        width: "24px",
-        height: "24px",
-        borderRadius: "50%",
-        backgroundColor: "#e63946",
-        color: "#fff",
-        fontSize: "0.85rem",
-        fontWeight: 700,
-        flexShrink: 0,
-      }}
-      aria-hidden="true"
-    >
-      2
-    </span>
-    <div>
-      <span className="fw-semibold">Collect & Analyze Evidence:</span>{" "}
-      <span className="text-muted">Gathering critical artifacts to assess impact.</span>
-    </div>
-  </li>
+                  <li className="mb-3 d-flex align-items-start">
+                    <span
+                      className="me-3 d-inline-flex align-items-center justify-content-center"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        backgroundColor: "#e63946",
+                        color: "#fff",
+                        fontSize: "0.85rem",
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                      aria-hidden="true"
+                    >
+                      2
+                    </span>
+                    <div>
+                      <span className="fw-semibold">
+                        Collect & Analyze Evidence:
+                      </span>{" "}
+                      <span className="text-muted">
+                        Gathering critical artifacts to assess impact.
+                      </span>
+                    </div>
+                  </li>
 
-  <li className="mb-3 d-flex align-items-start">
-    <span
-      className="me-3 d-inline-flex align-items-center justify-content-center"
-      style={{
-        width: "24px",
-        height: "24px",
-        borderRadius: "50%",
-        backgroundColor: "#e63946",
-        color: "#fff",
-        fontSize: "0.85rem",
-        fontWeight: 700,
-        flexShrink: 0,
-      }}
-      aria-hidden="true"
-    >
-      3
-    </span>
-    <div>
-      <span className="fw-semibold">Identify Compromise Scope:</span>{" "}
-      <span className="text-muted">Understanding how deep the breach can go.</span>
-    </div>
-  </li>
-</ul>
+                  <li className="mb-3 d-flex align-items-start">
+                    <span
+                      className="me-3 d-inline-flex align-items-center justify-content-center"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        backgroundColor: "#e63946",
+                        color: "#fff",
+                        fontSize: "0.85rem",
+                        fontWeight: 700,
+                        flexShrink: 0,
+                      }}
+                      aria-hidden="true"
+                    >
+                      3
+                    </span>
+                    <div>
+                      <span className="fw-semibold">
+                        Identify Compromise Scope:
+                      </span>{" "}
+                      <span className="text-muted">
+                        Understanding how deep the breach can go.
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-    </div>
-  </div>
-</div>
-
-
-          {/* ===== Deliverables & Results ===== */}
+          {/* Deliverables & Results*/}
           <div className="row align-items-center mt-5 g-4">
             {/* Deliverables */}
             <div className="col-lg-6 text-start">
@@ -323,7 +376,8 @@ export default function ProfessionalRedTeaming() {
                       style={{ fontSize: "1.2rem", color: "#e63946" }}
                     ></i>
                     <span>
-                      Deep understanding of real-world threats that may compromise systems
+                      Deep understanding of real-world threats that may
+                      compromise systems
                     </span>
                   </li>
                   <li className="mb-3 d-flex align-items-start">
@@ -332,8 +386,8 @@ export default function ProfessionalRedTeaming() {
                       style={{ fontSize: "1.2rem", color: "#e63946" }}
                     ></i>
                     <span>
-                      Complete assessment of readiness across technology, people, and
-                      processes
+                      Complete assessment of readiness across technology,
+                      people, and processes
                     </span>
                   </li>
                   <li className="mb-3 d-flex align-items-start">
@@ -349,11 +403,87 @@ export default function ProfessionalRedTeaming() {
               </div>
             </div>
           </div>
-          </div>
+        </div>
       </section>
 
-      
+      {/*FAQ Section*/}
+      <section className="container my-5">
+        <h3 className="fw-bold mb-4 text-center">
+          Frequently Asked Questions (FAQs)
+        </h3>
+        <div className="faq-wrapper">
+          {faqs.map((item, i) => {
+            const isOpen = openIndexes.includes(i);
+            return (
+              <div
+                key={i}
+                className="faq-item mb-3 shadow-sm rounded-3 overflow-hidden"
+              >
+                <button
+                  onClick={() => toggleFAQ(i)}
+                  className={`faq-question w-100 d-flex justify-content-between align-items-center`}
+                >
+                  {item.q}
+                  <span className={`faq-icon ${isOpen ? "open" : ""}`}>
+                    <FaChevronDown />
+                  </span>
+                </button>
+                <div className={`faq-answer ${isOpen ? "show" : ""}`}>
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
+        <style jsx>{`
+          .faq-item {
+            background: #fff;
+            transition: all 0.3s ease;
+          }
+          .faq-question {
+            background: #f8f9fa;
+            border: none;
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease, color 0.3s ease;
+          }
+          .faq-question:hover {
+            background: #e63946;
+            color: #fff;
+          }
+          .faq-icon {
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+          }
+          .faq-icon.open {
+            transform: rotate(180deg);
+          }
+          .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.25rem;
+            background: #f8f9fa;
+            transition: all 0.4s ease;
+          }
+          .faq-answer.show {
+            max-height: 500px;
+            padding: 1rem 1.25rem;
+          }
+          .faq-answer p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+          }
+        `}</style>
+      </section>
       <Contact />
       <Footer />
     </>
