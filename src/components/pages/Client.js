@@ -1,17 +1,15 @@
-
 'use client';
 
 import Image from 'next/image';
 
 const clients = [
-  { src: '/img/clients/Client-1.png', alt: 'PT Lontar Riset Indonesia Logo', name: 'PT Lontar Riset Indonesia' },
-  { src: '/img/clients/Client-2.png', alt: 'PT. OCBC Sekuritas Indonesia Logo', name: 'PT. OCBC Sekuritas Indonesia' },
-  { src: '/img/clients/Client-3.png', alt: 'PT Dimas Jaya Group Logo', name: 'PT Dimas Jaya Group' },
-  { src: '/img/clients/Client-4.png', alt: 'Badan Intelijen Negara Logo', name: 'BIN (Badan Intelijen Negara)' },
-  { src: '/img/clients/Client-5.png', alt: 'PT Artifisial Teknologi Global Logo', name: 'PT Artifisial Teknologi Global' }
+  { src: '/img/clients/Client-1.png' },
+  { src: '/img/clients/Client-2.png' },
+  { src: '/img/clients/Client-3.png' },
+  { src: '/img/clients/Client-4.png' },
+  { src: '/img/clients/Client-5.png' }
 ];
 
-// Inline style diselaraskan dengan pola di Certification.js
 const sectionStyle = {
   padding: '60px 0',
   backgroundColor: '#f8f9fa',
@@ -33,16 +31,16 @@ const descriptionStyle = {
   lineHeight: '1.8',
 };
 
-const imageContainerStyle = {
-  position: 'relative',
-  width: '100%',
-  height: '80px', // Sesuaikan dengan proporsi card yang lebih panjang
-};
-
 const cardStyle = {
-  minHeight: '200px', // Sesuaikan dengan CSS global (desktop)
-  height: '200px',    // Sesuaikan dengan CSS global (desktop)
-  padding: '22px',    // Sesuaikan dengan CSS global
+  minHeight: '180px',
+  height: '180px',
+  padding: '20px',
+  borderRadius: '12px',
+  backgroundColor: '#fff',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 };
 
 export default function Client() {
@@ -64,19 +62,18 @@ export default function Client() {
               data-aos="zoom-in"
               data-aos-delay={150 + i * 50}
             >
-              <div className="client-logo-box d-flex flex-column align-items-center justify-content-center" style={cardStyle}>
-                <div style={imageContainerStyle}>
-                  <Image
-                    src={c.src}
-                    alt={c.alt}
-                    fill
-                    className="img-fluid client-logo-img"
-                    sizes="(max-width: 575px) 100vw, (max-width: 768px) 50vw, (max-width: 992px) 33vw, 20vw"
-                    style={{ objectFit: 'contain' }}
-                    priority={i < 2}
-                  />
-                </div>
-                <p className="client-logo-name text-center mb-0 mt-2" style={{ fontSize: '0.75rem' }}>{c.name}</p>
+              <div style={cardStyle}>
+                <Image
+                  src={c.src}
+                  alt={`Client ${i + 1}`}
+                  width={140}
+                  height={80}
+                  style={{
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                  priority={i < 2}
+                />
               </div>
             </div>
           ))}
