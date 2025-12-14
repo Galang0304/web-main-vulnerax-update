@@ -9,7 +9,7 @@ import CallToAction from "@/components/pages/CallToAction";
 import Client from "@/components/pages/Client";
 import Contact from "@/components/pages/Contact";
 import Footer from "@/components/pages/Footer";
-
+#
 const heroSectionStyle = {
   paddingTop: '100px',
   paddingBottom: '80px',
