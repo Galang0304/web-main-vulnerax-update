@@ -4,8 +4,8 @@ Website utama VulneraX dibangun dengan **Next.js 15** untuk menampilkan artikel,
 
 ## 🌐 Demo
 
-- **Production**: http://103.151.145.167/
-- **Admin Panel**: http://103.151.145.167/admin/
+- **Production**: http://YOUR_SERVER_IP/
+- **Admin Panel**: http://YOUR_SERVER_IP/admin/
 
 ---
 
@@ -121,7 +121,7 @@ git push origin main
 ### 1. SSH ke Server
 
 ```bash
-ssh root@103.151.145.167
+ssh root@YOUR_SERVER_IP
 ```
 
 ### 2. Clone/Pull Repository
