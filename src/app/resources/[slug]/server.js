@@ -1,5 +1,6 @@
 // API URL untuk artikel dari admin panel
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api/public/articles';
+// Server-side needs full URL, use internal server address
+const API_BASE_URL = process.env.API_INTERNAL_URL || 'http://127.0.0.1:5001/api/public/articles';
 
 // Artikel statis dikosongkan - semua artikel dikelola via web admin
 export const resources = {};
