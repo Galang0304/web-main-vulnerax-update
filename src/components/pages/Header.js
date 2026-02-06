@@ -83,13 +83,13 @@ export default function Header() {
               </ul>
             </li>
             <li className="dropdown">
-              <a href="https://resources.vulnerax.com/">
+              <a href="/resources">
                 <span>Resources</span> 
                 <i className="bi bi-chevron-down toggle-dropdown"></i>
               </a>
               <ul>
-                <li><a href="https://resources.vulnerax.com/resources/articles">Article</a></li>
-                <li><a href="https://resources.vulnerax.com/resources/vulneralab">VulneraLab</a></li>
+                <li><a href="/resources">Articles</a></li>
+                <li><a href="/resources/vulneralab">VulneraLab</a></li>
               </ul>
             </li>
             <li><Link href="/#our-certification">Certification</Link></li>

@@ -32,7 +32,7 @@ export default function Footer() {
                 <Link href="/#services">Services</Link>
               </li>
               <li>
-                <Link href="https://resources.vulnerax.com/">Resources</Link>
+                <Link href="/resources">Resources</Link>
               </li>
               <li>
                 <Link href="/#our-certification">Certification</Link>

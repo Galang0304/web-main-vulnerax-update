@@ -2913,3 +2913,206 @@ section,
 @media (prefers-reduced-motion: reduce) {
   .client-logo-box, .client-logo-box:hover, .client-logo-img, .client-logo-box:hover .client-logo-img { transition: none; }
 }
+
+/*--------------------------------------------------------------
+# Article Content Styles (for API generated content)
+--------------------------------------------------------------*/
+
+/* Table styles for articles from API */
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+  margin: 14px 0;
+  border: 1px solid rgba(11, 18, 32, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+  text-align: left;
+}
+
+.preview-table th {
+  background-color: #0b1220;
+  color: #fff;
+  font-weight: 600;
+}
+
+.preview-table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.preview-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.preview-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Alert styles for articles from API */
+.preview-alert {
+  margin: 18px 0;
+  padding: 14px;
+  background-color: #0b1220;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.preview-alert-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 8px;
+  background-color: #de1a34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.preview-alert-content {
+  flex: 1;
+}
+
+.preview-alert-title {
+  font-weight: 700;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+
+.preview-alert-text {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.preview-warning {
+  background-color: #0b1220;
+}
+
+.preview-warning .preview-alert-icon {
+  background-color: #de1a34;
+}
+
+.preview-info {
+  background-color: #0b1220;
+}
+
+.preview-info .preview-alert-icon {
+  background-color: #de1a34;
+}
+
+/* Image caption for articles from API */
+.img-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+/* Image Gallery Styles for API Articles */
+.image-gallery {
+  display: grid;
+  width: 100%;
+}
+
+.image-gallery.gallery-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-gallery.gallery-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.image-gallery.gallery-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.image-gallery .gallery-item {
+  overflow: hidden;
+}
+
+.image-gallery .gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-gallery .gallery-item img:hover {
+  transform: scale(1.02);
+}
+
+.image-gallery .gallery-caption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Gallery span for orphan images */
+.image-gallery .gallery-item-span-2 {
+  grid-column: span 2;
+}
+
+.image-gallery .gallery-item-span-3 {
+  grid-column: span 3;
+}
+
+.image-gallery .gallery-item-span-4 {
+  grid-column: span 4;
+}
+
+.image-gallery .gallery-item-span-2 img,
+.image-gallery .gallery-item-span-3 img,
+.image-gallery .gallery-item-span-4 img {
+  height: 300px;
+}
+
+/* Responsive Gallery */
+@media (max-width: 768px) {
+  .image-gallery.gallery-cols-3,
+  .image-gallery.gallery-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .image-gallery .gallery-item-span-3,
+  .image-gallery .gallery-item-span-4 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery.gallery-cols-2,
+  .image-gallery.gallery-cols-3,
+  .image-gallery.gallery-cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-gallery .gallery-item-span-2,
+  .image-gallery .gallery-item-span-3,
+  .image-gallery .gallery-item-span-4 {
+    grid-column: span 1;
+  }
+  
+  .image-gallery .gallery-item img,
+  .image-gallery .gallery-item-span-2 img,
+  .image-gallery .gallery-item-span-3 img,
+  .image-gallery .gallery-item-span-4 img {
+    height: 200px;
+  }
+}
