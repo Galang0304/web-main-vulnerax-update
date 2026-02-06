@@ -4,6 +4,9 @@ import DynamicContent from '@/components/resources/DynamicContent';
 import styles from "@/styles/article.module.css";
 import { getArticleBySlugAsync, relatedArticlesList, generateStaticParams } from './server';
 
+// Force dynamic rendering for API articles
+export const dynamic = 'force-dynamic';
+
 // Ekspor generateStaticParams untuk SSG
 export { generateStaticParams };
 
