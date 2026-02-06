@@ -9,8 +9,11 @@ import FeaturedPosts from '@/components/resources/FeaturedPosts';
 import RecentPosts from '@/components/resources/RecentPosts';
 import { sortedArticles, featuredArticles, staticArticles, parseDate } from '@/data/articles';
 
-// API Base URL - use relative URL for same server, or env variable
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api/public/articles';
+// API Base URL - localhost for dev, relative for production
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 
+  (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000/api/public/articles' 
+    : '/api/public/articles');
 
 export default function ResourcesPage() {
   const [allArticles, setAllArticles] = useState([]);
