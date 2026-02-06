@@ -7,7 +7,8 @@ import Header from '@/components/pages/Header';
 import Footer from '@/components/pages/Footer';
 import Link from 'next/link';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+// Use empty string for same-origin requests in production
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE || '';
 
 export default function VulneraLabPage() {
   const [documents, setDocuments] = useState([]);
