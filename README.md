@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VulneraX - Website Utama
 
-## Getting Started
+Website utama VulneraX dibangun dengan **Next.js 15** untuk menampilkan artikel, layanan, dan informasi perusahaan.
 
-First, run the development server:
+## 🚀 Fitur
+
+- Landing page dengan informasi layanan keamanan siber
+- Halaman artikel/resources dari API
+- VulneraLab - Tutorial dan lab keamanan
+- Ransomware Readiness Assessment (RRA)
+- Score Card generator
+- PDF Report generator
+- Responsive design
+
+## 📋 Prasyarat
+
+Pastikan sudah terinstall:
+
+- **Node.js** v18 atau lebih baru (disarankan v20+)
+- **npm** atau **yarn**
+- **Git**
+
+## 🛠️ Instalasi
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/Galang0304/web-main-vulnerax-update.git
+cd web-main-vulnerax-update
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Jalankan Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka browser dan akses: **http://localhost:3000**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 4. Build untuk Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📁 Struktur Folder
 
-To learn more about Next.js, take a look at the following resources:
+```
+vulnerax-main/
+├── public/              # Static files (images, icons, dll)
+│   ├── img/
+│   └── robots.txt
+├── src/
+│   ├── app/             # Next.js App Router
+│   │   ├── page.js      # Landing page
+│   │   ├── layout.js    # Root layout
+│   │   ├── globals.css  # Global styles
+│   │   ├── resources/   # Halaman artikel
+│   │   ├── rra/         # Ransomware Assessment
+│   │   └── [Services]/  # Halaman layanan
+│   ├── components/      # React components
+│   ├── data/            # Static data
+│   ├── store/           # State management
+│   ├── styles/          # CSS Modules
+│   └── utils/           # Utility functions
+├── package.json
+└── next.config.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Integrasi dengan Admin Panel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Website ini mengambil data artikel dari **VulneraX Admin API**. 
 
-## Deploy on Vercel
+Untuk development lokal dengan data artikel:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Jalankan Admin API server (lihat repo `web-admin-vulnerax`)
+2. Update endpoint API di komponen yang membutuhkan
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details..........
+## 📝 Environment Variables (Opsional)
+
+Buat file `.env.local` jika diperlukan:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+
+## 🧪 Scripts
+
+| Command | Deskripsi |
+|---------|-----------|
+| `npm run dev` | Jalankan development server |
+| `npm run build` | Build untuk production |
+| `npm start` | Jalankan production server |
+| `npm run lint` | Cek kode dengan ESLint |
+
+## 📄 Lisensi
+
+© 2024-2026 VulneraX. All rights reserved.
