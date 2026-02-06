@@ -1,5 +1,5 @@
 // API URL untuk artikel dari admin panel
-const API_BASE_URL = 'http://localhost:5000/api/public/articles';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api/public/articles';
 
 // Artikel statis dikosongkan - semua artikel dikelola via web admin
 export const resources = {};
