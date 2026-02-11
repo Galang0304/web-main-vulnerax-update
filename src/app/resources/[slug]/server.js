@@ -2,7 +2,7 @@
 // Use environment variable or detect environment
 const API_BASE_URL = process.env.API_INTERNAL_URL || 
   (process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:5000/api/public/articles'
+    ? 'http://localhost:5001/api/public/articles'
     : 'http://127.0.0.1:5001/api/public/articles');
 
 // Artikel statis dikosongkan - semua artikel dikelola via web admin

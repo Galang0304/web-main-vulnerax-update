@@ -125,9 +125,9 @@ export default async function ResourceDetail({ params }) {
                         : article.content;
                       // Fix image URLs - convert relative paths to absolute API URLs
                       return content
-                        .replace(/src="\/uploads\//g, 'src="http://localhost:5000/uploads/')
-                        .replace(/src="\/img\//g, 'src="http://localhost:5000/img/')
-                        .replace(/src="http:\/\/100\.125\.224\.53:5000/g, 'src="http://localhost:5000');
+                        .replace(/src="\/uploads\//g, 'src="http://localhost:5001/uploads/')
+                        .replace(/src="\/img\//g, 'src="http://localhost:5001/img/')
+                        .replace(/src="http:\/\/100\.125\.224\.53:5000/g, 'src="http://localhost:5001');
                     })()
                   }}
                 />

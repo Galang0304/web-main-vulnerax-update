@@ -9,11 +9,18 @@ import FeaturedPosts from '@/components/resources/FeaturedPosts';
 import RecentPosts from '@/components/resources/RecentPosts';
 import { sortedArticles, featuredArticles, staticArticles, parseDate } from '@/data/articles';
 
-// API Base URL - localhost for dev, relative for production
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 
-  (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
-    ? 'http://localhost:5000/api/public/articles' 
-    : '/api/public/articles');
+// API Base URL - prefer explicit dev backend when NEXT_PUBLIC_API_URL is relative
+let API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+  // If env is not set or points to the relative proxy path, use the backend dev port
+  if (!API_BASE_URL || API_BASE_URL === '/api/public/articles') {
+    API_BASE_URL = 'http://localhost:5001/api/public/articles';
+  } else if (API_BASE_URL.startsWith('/')) {
+    // Convert any other relative path to the backend host during local dev
+    API_BASE_URL = `http://localhost:5001${API_BASE_URL}`;
+  }
+}
+API_BASE_URL = API_BASE_URL || '/api/public/articles';
 
 export default function ResourcesPage() {
   const [allArticles, setAllArticles] = useState([]);
